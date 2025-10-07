@@ -15,6 +15,7 @@ public class GraphManager : MonoBehaviour
     [SerializeField] private float graphRadius = 5f;
     [SerializeField] private Color cleanColor = Color.green;
     [SerializeField] private Color infectedColor = Color.red;
+    [SerializeField] private float lineWidth = 0.2f;
 
     private List<NetworkNode> nodes = new List<NetworkNode>();
     private List<LineRenderer> edgeRenderers = new List<LineRenderer>();
@@ -108,8 +109,8 @@ public class GraphManager : MonoBehaviour
         edgeObj.transform.parent = transform;
 
         LineRenderer lr = edgeObj.AddComponent<LineRenderer>();
-        lr.startWidth = 0.05f;
-        lr.endWidth = 0.05f;
+        lr.startWidth = lineWidth;
+        lr.endWidth = lineWidth;
         lr.material = new Material(Shader.Find("Sprites/Default"));
         lr.startColor = Color.gray;
         lr.endColor = Color.gray;
