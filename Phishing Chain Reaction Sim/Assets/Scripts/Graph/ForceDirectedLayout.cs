@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System;
+using Unity.VisualScripting.YamlDotNet.Core;
 
 // implement force directed graph layout using Fruchterman-Reinhold algorithm
 public class ForceDirectedLayout : MonoBehaviour
@@ -88,22 +89,59 @@ public class ForceDirectedLayout : MonoBehaviour
         }
         else
         {
+            // No visual updates between iterations
             while (!isLayoutComplete)
             {
                 PerformIteration();
             }
             SyncVisualPositions();
-            enabled = false;
         }
     }
 
+    // perform one iteration of the force directed algorithm
+    private void PerformIteration()
+    {
+        // apply all forces
+        CalculateRepulsiveForces();
+        CalculateAttractiveForces();
+
+        // update positions based on new velocities
+        UpdatePositions();
+
+        currentIteration++;
+
+        // Check convergence or max iterations reached
+        if (CheckConvergence() || currentIteration >= maxIterations)
+        {
+            isLayoutComplete = true;
+            enabled = false;
+
+            string reason = currentIteration >= maxIterations ? "max iterations" : "converged";
+            Debug.Log($"ForceDirectedLayout: Completed layout in {currentIteration} iterations ({reason})");
+        }
+    }
     private void SyncVisualPositions()
     {
         throw new NotImplementedException();
     }
-
-    private void PerformIteration()
+    private void CalculateRepulsiveForces()
     {
         throw new NotImplementedException();
     }
+
+    private void CalculateAttractiveForces()
+    {
+        throw new NotImplementedException();
+    }
+
+    private void UpdatePositions()
+    {
+        throw new NotImplementedException();
+    }
+
+    private bool CheckConvergence()
+    {
+        throw new NotImplementedException();
+    }
+
 }
