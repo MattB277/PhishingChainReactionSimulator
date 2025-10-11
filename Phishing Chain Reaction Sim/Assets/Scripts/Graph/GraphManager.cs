@@ -16,6 +16,9 @@ public class GraphManager : MonoBehaviour
     [SerializeField] private Color infectedColor = Color.red;
     [SerializeField] private float lineWidth = 0.2f;
 
+    [Header("Layout")]
+    [SerializeField] private ForceDirectedLayout layout;
+
     private List<NetworkNode> nodes = new List<NetworkNode>();
     private List<LineRenderer> edgeRenderers = new List<LineRenderer>();
 
@@ -24,6 +27,7 @@ public class GraphManager : MonoBehaviour
     {
         GenerateGraph();
         RenderGraph();
+        layout.RunLayout(nodes, graphRadius);        
     }
 
     // initialise nodeCount nodes, with edges and initial positions. 
