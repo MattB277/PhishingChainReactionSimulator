@@ -1,9 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System;
-using Unity.VisualScripting.YamlDotNet.Core;
 
-// implement force directed graph layout using Fruchterman-Reinhold algorithm
+// implement force directed graph layout using Fruchterman-Reingold algorithm
 public class ForceDirectedLayout : MonoBehaviour
 {
     [Header("Force Parameters")]
