@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System;
 
 // implement force directed graph layout using Fruchterman-Reinhold algorithm
 public class ForceDirectedLayout : MonoBehaviour
@@ -37,5 +38,72 @@ public class ForceDirectedLayout : MonoBehaviour
     
     [SerializeField] private bool showDebugInfo = true;
     [Tooltip("Display iteration count and convergence info")]
-    
+
+    private List<NetworkNode> nodes;
+    private bool isLayoutComplete = false;
+    private int currentIteration = 0;
+    private float k; // optimal distance constant
+
+    public void RunLayout(List<NetworkNode> nodes, float graphRadius)
+    {
+        // check nodes exist
+        if (nodes == null || nodes.Count == 0)
+        {
+            Debug.LogWarning("ForceDirectedLayout: No nodes passed in!");
+            return;
+        }
+
+        this.nodes = nodes;
+        isLayoutComplete = false;
+        currentIteration = 0;
+
+        // calculate optimal distance if auto-scale enabled
+        if (autoScale) CalculateOptimalDistance(graphRadius);
+
+        enabled = true; // enable update() calls
+
+        Debug.Log($"ForceDirectedLayout: Starting layout for {nodes.Count} nodes, with k={k:F2}");
+    }
+
+    // calculate optimal distance constant based on graph size
+    // Formula: k = C x sqrt(area/nodeCount)
+    private void CalculateOptimalDistance(float graphRadius)
+    {
+        float area = Mathf.PI * graphRadius * graphRadius;
+        k = baseOptimalDistance * Mathf.Sqrt(area / nodes.Count);
+    }
+
+    void Update()
+    {
+        if (isLayoutComplete) return;
+
+        if (showAnimation)
+        {
+            // Animation enabled
+            for (int i = 0; i < iterationsPerFrame; i++)
+            {
+                PerformIteration();
+            }
+            SyncVisualPositions();
+        }
+        else
+        {
+            while (!isLayoutComplete)
+            {
+                PerformIteration();
+            }
+            SyncVisualPositions();
+            enabled = false;
+        }
+    }
+
+    private void SyncVisualPositions()
+    {
+        throw new NotImplementedException();
+    }
+
+    private void PerformIteration()
+    {
+        throw new NotImplementedException();
+    }
 }
