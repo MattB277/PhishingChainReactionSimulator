@@ -143,4 +143,9 @@ public class ForceDirectedLayout : MonoBehaviour
         throw new NotImplementedException();
     }
 
+    public bool IsLayoutComplete()
+    {
+        return isLayoutComplete;
+    }
+
 }
