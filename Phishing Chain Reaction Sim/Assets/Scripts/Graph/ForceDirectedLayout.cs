@@ -11,6 +11,9 @@ public class ForceDirectedLayout : MonoBehaviour
     
     [SerializeField] private float repulsionStrength = 10f;
     [Tooltip("Strength of repulsive forces between all nodes")]
+
+    [SerializeField] private float repulsionCutoffMultiplier = 3f;
+    [Tooltip("Ignore repulsion beyond this multiple of optimal distance")]
     
     [SerializeField] private float damping = 0.85f;
     [Tooltip("Velocity damping factor (0-1). Higher = slower settling")]
@@ -123,9 +126,55 @@ public class ForceDirectedLayout : MonoBehaviour
     {
         throw new NotImplementedException();
     }
+
+    // Calculate repulsive forces between all node pairs, using distance cutoff and squared distance optimisations. 
+    // TODO: map formulas to code because this is a lot of maths
     private void CalculateRepulsiveForces()
     {
-        throw new NotImplementedException();
+        // repulsive force: F = k^2 / distance
+        // calculated as F = repulsionStrength * k * k / distance
+
+        float cutoffDistance = k * repulsionCutoffMultiplier;
+        float cutoffDistanceSq = cutoffDistance * cutoffDistance; // calculate square as cuttoff based on square distance
+
+        for (int i = 0; i<nodes.Count; i++)
+        {
+            // reset force accumulator for this node
+            Vector2 totalForce = Vector2.zero;
+
+            for (int j = 0; j < nodes.Count; j++)
+            {
+                if (i == j) continue; // dont repel from self
+
+                // calculate position delta
+                Vector2 delta = nodes[i].position - nodes[j].position;
+                // use squared distance for faster cutoff and same pos checks (no square root when it isnt needed)
+                float distanceSq = delta.sqrMagnitude; 
+
+                // skip far away pairs
+                if (distanceSq > cutoffDistanceSq) continue; 
+
+                // handle same pos edge case by adding small jitter to existing position
+                if (distanceSq < 0.0001f)
+                {
+                    delta = (UnityEngine.Random.insideUnitCircle.normalized + Vector2.one * 0.001f) * 0.01f;
+                    distanceSq = delta.sqrMagnitude;
+                }
+
+                // convert squared distance to true euclid distance
+                float distance = Mathf.Sqrt(distanceSq);
+
+                // calculate force magnitude
+                float forceMagnitude = repulsionStrength * k * k / distance;
+
+                // calculate forceVector
+                Vector2 forceDirection = delta / distance;
+                Vector2 forceVector = forceDirection * forceMagnitude;
+
+                nodes[i].velocity -= forceVector;
+                nodes[j].velocity += forceVector;
+            }
+        }
     }
 
     private void CalculateAttractiveForces()
