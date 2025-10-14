@@ -172,7 +172,7 @@ public class ForceDirectedLayoutTests
     }
 
     [Test]
-    public void CalculateAttractiveForces_PullTogether()
+    public void CalculateAttractiveForces_TwoConnectedNodes_PullTogether()
     {
         List<NetworkNode> nodes = CreateTestNodes(2);
         nodes[0].position = new Vector2(0, 0);
@@ -195,6 +195,26 @@ public class ForceDirectedLayoutTests
         // velocities should be equal and opposite
         Assert.AreEqual(nodes[0].velocity, -nodes[1].velocity, "Velocities should be equal and opposite");
     }
+
+    [Test]
+    public void CalculateAttractiveForces_NoConnections_NoVelocityChange()
+    {
+        List<NetworkNode> nodes = CreateTestNodes(2);
+        nodes[0].position = new Vector2(0, 0);
+        nodes[1].position = new Vector2(1, 0);
+
+        layout.RunLayout(nodes, 5f);
+
+        var method = typeof(ForceDirectedLayout).GetMethod("CalculateAttractiveForces",
+            System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+
+        method.Invoke(layout, null);
+
+        // velocities should remain zero
+        Assert.AreEqual(Vector2.zero, nodes[0].velocity);
+        Assert.AreEqual(Vector2.zero, nodes[1].velocity);
+    }
+
 
     public void ConnectTwoNodes(NetworkNode a, NetworkNode b)
     {
