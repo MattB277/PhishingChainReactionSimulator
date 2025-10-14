@@ -196,7 +196,7 @@ public class ForceDirectedLayout : MonoBehaviour
                 float distanceSq = delta.sqrMagnitude;
 
                 // skip same position pairs (shouldn't happen unless first iteration)
-                if (distanceSq > 0.0001f) continue; 
+                if (distanceSq < 0.0001f) continue; 
 
                 // convert squared distance to true euclid distance
                 float distance = Mathf.Sqrt(distanceSq);
