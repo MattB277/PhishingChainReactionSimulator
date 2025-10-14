@@ -180,6 +180,20 @@ public class ForceDirectedLayoutTests
 
         // connect two nodes
         ConnectTwoNodes(nodes[0], nodes[1]);
+
+        layout.RunLayout(nodes, 5f);
+
+        var method = typeof(ForceDirectedLayout).GetMethod("CalculateAttractiveForces",
+            System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+
+        method.Invoke(layout, null);
+
+        // nodes should have velocities towards each other
+        Assert.AreNotEqual(Vector2.zero, nodes[0].velocity, "Node[0] velocity should have changed.");
+        Assert.AreNotEqual(Vector2.zero, nodes[1].velocity, "Node[1] velocity should have changed.");
+
+        // velocities should be equal and opposite
+        Assert.AreEqual(nodes[0].velocity, -nodes[1].velocity, "Velocities should be equal and opposite");
     }
 
     public void ConnectTwoNodes(NetworkNode a, NetworkNode b)
