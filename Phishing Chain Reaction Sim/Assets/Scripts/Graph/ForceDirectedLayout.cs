@@ -195,7 +195,7 @@ public class ForceDirectedLayout : MonoBehaviour
                 Vector2 delta = edge.target.position - edge.source.position;
                 float distanceSq = delta.sqrMagnitude;
 
-                // skip same position pairs (shouldn't happen)
+                // skip same position pairs (shouldn't happen unless first iteration)
                 if (distanceSq > 0.0001f) continue; 
 
                 // convert squared distance to true euclid distance
