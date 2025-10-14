@@ -99,7 +99,7 @@ public class ForceDirectedLayoutTests
         Assert.AreNotEqual(Vector2.zero, nodes[1].velocity, "ForceDirectedLayout.CalculateRepulsiveForces(): Node 1 velocity should have changed");
 
         // only the case when layout is of only 2 nodes!
-        Assert.AreEqual(nodes[0].velocity, nodes[1].velocity, "ForceDirectedLayout.CalculateRepulsiveForces(): Node velocities should be equal and opposite");
+        Assert.AreEqual(nodes[0].velocity, -nodes[1].velocity, "ForceDirectedLayout.CalculateRepulsiveForces(): Node velocities should be equal and opposite");
     }
 
     [Test]
