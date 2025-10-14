@@ -215,6 +215,34 @@ public class ForceDirectedLayoutTests
         Assert.AreEqual(Vector2.zero, nodes[1].velocity);
     }
 
+    [Test]
+    public void CalculateAttractiveForces_StarTopology_AllEdgesCalculated()
+    {
+        // create one centre node with 4 outer nodes
+        List<NetworkNode> nodes = CreateTestNodes(5);
+        nodes[0].position = new Vector2(0, 1);
+        for (int i = 1; i < 5; i++)
+        {
+            ConnectTwoNodes(nodes[0], nodes[i]);
+            nodes[0].position = new Vector2(i, 0);
+        }
+
+        layout.RunLayout(nodes, 10f);
+
+        var method = typeof(ForceDirectedLayout).GetMethod("CalculateAttractiveForces",
+            System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+
+        method.Invoke(layout, null);
+
+        // Centre node should feel net force from all 4 connections
+        Assert.AreNotEqual(Vector2.zero, nodes[0].velocity, "Centre node should have non-zero velocity");
+
+        // Each outer node should also move
+        for (int i = 1; i <= 4; i++)
+        {
+            Assert.AreNotEqual(Vector2.zero, nodes[i].velocity, $"Outer node {i} should have non-zero velocity");
+        }
+    }
 
     public void ConnectTwoNodes(NetworkNode a, NetworkNode b)
     {
