@@ -120,13 +120,13 @@ public class ForceDirectedLayoutTests
         Assert.AreEqual(Vector2.zero, nodes[0].velocity);
         Assert.AreEqual(Vector2.zero, nodes[1].velocity);
     }
-    
+
     [Test]
     public void CalculateRepulsiveForces_HandlesSamePositionNodes()
     {
         // nodes initialised in helper to vec2(0,0)
         List<NetworkNode> nodes = CreateTestNodes(2);
-        
+
         layout.RunLayout(nodes, 5f);
 
         var method = typeof(ForceDirectedLayout).GetMethod("CalculateRepulsiveForces",
@@ -137,6 +137,38 @@ public class ForceDirectedLayoutTests
         // nodes should have non-zero velocities due to jitter handling
         Assert.AreNotEqual(Vector2.zero, nodes[0].velocity);
         Assert.AreNotEqual(Vector2.zero, nodes[1].velocity);
+    }
+    
+    [Test]
+    public void CalculateRepulsiveForces_MultipleNodes_ForceDistribution()
+    {
+        // create a line of 3 nodes with small asymmetric spacing
+        List<NetworkNode> nodes = CreateTestNodes(3);
+        nodes[0].position = new Vector2(0, 0);      // start node
+        nodes[1].position = new Vector2(0.7f, 0);
+        nodes[2].position = new Vector2(1, 0);      // end node, middle node is closer to it
+
+        layout.RunLayout(nodes, 5f);
+
+        var method = typeof(ForceDirectedLayout).GetMethod("CalculateRepulsiveForces",
+            System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+
+        method.Invoke(layout, null);
+
+        // all nodes should have some repulsive velocity
+        foreach (var node in nodes)
+        {
+            Assert.AreNotEqual(Vector2.zero, node.velocity, $"Node {node.id} should have non-zero velocity");
+        }
+
+        // nodes closer together have larger velocity magnitude than nodes farther apart
+        var endNode = nodes[2]; // end of line
+        float endMag = endNode.velocity.magnitude;
+
+        var startNode = nodes[0]; // start node should feel less net force from distant nodes
+        float startMag = startNode.velocity.magnitude;
+
+        Assert.Greater(endMag, startMag, "End node should have larger velocity due to closer neighbour");
     }
     
     private List<NetworkNode> CreateTestNodes(int nodeCount)
