@@ -82,21 +82,43 @@ public class ForceDirectedLayoutTests
     public void CalculateRepulsiveForces_UpdatesNodeVelocities()
     {
         List<NetworkNode> nodes = CreateTestNodes(2);
+    
+        nodes[0].position = new Vector2(0, 0);
+        nodes[1].position = new Vector2(1, 0);
 
         layout.RunLayout(nodes, 5f);
 
         // use reflection to access private method
         var method = typeof(ForceDirectedLayout).GetMethod("CalculateRepulsiveForces",
-        System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+            System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
 
         method.Invoke(layout, null);
 
         // velocities initialized to zero, should be updated to equal, opposite velocities
         Assert.AreNotEqual(Vector2.zero, nodes[0].velocity, "ForceDirectedLayout.CalculateRepulsiveForces(): Node 0 velocity should have changed");
         Assert.AreNotEqual(Vector2.zero, nodes[1].velocity, "ForceDirectedLayout.CalculateRepulsiveForces(): Node 1 velocity should have changed");
-        
+
         // only the case when layout is of only 2 nodes!
         Assert.AreEqual(nodes[0].velocity, nodes[1].velocity, "ForceDirectedLayout.CalculateRepulsiveForces(): Node velocities should be equal and opposite");
+    }
+    
+    [Test]
+    public void CalculateRepulsiveForces_IgnoresFarApartNodes()
+    {
+        List<NetworkNode> nodes = CreateTestNodes(2);
+        nodes[0].position = new Vector2(0, 0);
+        nodes[1].position = new Vector2(1000, 0);
+        
+        layout.RunLayout(nodes, 5f);
+
+        var method = typeof(ForceDirectedLayout).GetMethod("CalculateRepulsiveForces",
+            System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+
+        method.Invoke(layout, null);
+
+        // nodes too far apart, velocity should remain zero as they have been skipped
+        Assert.AreEqual(Vector2.zero, nodes[0].velocity);
+        Assert.AreEqual(Vector2.zero, nodes[1].velocity);
     }
     
     private List<NetworkNode> CreateTestNodes(int nodeCount)
