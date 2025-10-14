@@ -78,21 +78,36 @@ public class ForceDirectedLayoutTests
         Assert.IsTrue(layout.enabled); // Should enable Update() calls
     }
 
+    [Test]
+    public void CalculateRepulsiveForces_UpdatesNodeVelocities()
+    {
+        List<NetworkNode> nodes = CreateTestNodes(2);
+
+        layout.RunLayout(nodes, 5f);
+
+        // use reflection to access private method
+        var method = typeof(ForceDirectedLayout).GetMethod("CalculateRepulsiveForces",
+        System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+
+        method.Invoke(layout, null);
+
+        // velocities initialized to zero, should be updated to equal, opposite velocities
+        Assert.AreNotEqual(Vector2.zero, nodes[0].velocity, "ForceDirectedLayout.CalculateRepulsiveForces(): Node 0 velocity should have changed");
+        Assert.AreNotEqual(Vector2.zero, nodes[1].velocity, "ForceDirectedLayout.CalculateRepulsiveForces(): Node 1 velocity should have changed");
+        
+        // only the case when layout is of only 2 nodes!
+        Assert.AreEqual(nodes[0].velocity, nodes[1].velocity, "ForceDirectedLayout.CalculateRepulsiveForces(): Node velocities should be equal and opposite");
+    }
+    
     private List<NetworkNode> CreateTestNodes(int nodeCount)
     {
         List<NetworkNode> nodes = new List<NetworkNode>();
 
-        // reused from GraphManager.GenerateGraph()
+        // nodes all initialised to position 0,0
         for (int i = 0; i < nodeCount; i++)
         {
             NetworkNode node = new NetworkNode(i);
-
-            // nodes are initialised on the circumference
-            float angle = i / (float)nodeCount * Mathf.PI * 2; // evenly space nodes
-            node.position = new Vector2(                        // convert polar to cartesian coordinates
-                Mathf.Cos(angle) * 5f,  // constant graph radius
-                Mathf.Sin(angle) * 5f
-            );
+            node.position = new Vector2(0, 0);
 
             nodes.Add(node);
         }
