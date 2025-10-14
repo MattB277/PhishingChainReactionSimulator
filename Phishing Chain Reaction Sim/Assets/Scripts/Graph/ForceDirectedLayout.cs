@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System;
+using Codice.Client.Common.TreeGrouper;
 
 // implement force directed graph layout using Fruchterman-Reingold algorithm
 public class ForceDirectedLayout : MonoBehaviour
@@ -137,7 +138,7 @@ public class ForceDirectedLayout : MonoBehaviour
         float cutoffDistance = k * repulsionCutoffMultiplier;
         float cutoffDistanceSq = cutoffDistance * cutoffDistance; // calculate square as cuttoff based on square distance
 
-        for (int i = 0; i<nodes.Count; i++)
+        for (int i = 0; i < nodes.Count; i++)
         {
             // reset force accumulator for this node
             Vector2 totalForce = Vector2.zero;
@@ -149,10 +150,10 @@ public class ForceDirectedLayout : MonoBehaviour
                 // calculate position delta
                 Vector2 delta = nodes[i].position - nodes[j].position;
                 // use squared distance for faster cutoff and same pos checks (no square root when it isnt needed)
-                float distanceSq = delta.sqrMagnitude; 
+                float distanceSq = delta.sqrMagnitude;
 
                 // skip far away pairs
-                if (distanceSq > cutoffDistanceSq) continue; 
+                if (distanceSq > cutoffDistanceSq) continue;
 
                 // handle same pos edge case by adding small jitter to existing position
                 if (distanceSq < 0.0001f)
@@ -177,9 +178,40 @@ public class ForceDirectedLayout : MonoBehaviour
         }
     }
 
+    // calculate attractive forces between connected nodes
+    // stronger as distance increases
     private void CalculateAttractiveForces()
     {
-        throw new NotImplementedException();
+        // attractive force: F = distance^2 / k
+        // calculated as F = attractionStrength * distance * distance / k;
+        
+        foreach (NetworkNode node in nodes)
+        {
+            foreach (NetworkEdge edge in node.connections)
+            {
+                // skip reverse edges
+                if (edge.source.id >= edge.target.id) continue;
+
+                Vector2 delta = edge.target.position - edge.source.position;
+                float distanceSq = delta.sqrMagnitude;
+
+                // skip same position pairs (shouldn't happen)
+                if (distanceSq > 0.0001f) continue; 
+
+                // convert squared distance to true euclid distance
+                float distance = Mathf.Sqrt(distanceSq);
+
+                // calculate force magnitude
+                float forceMagnitude = attractionStrength * distance * distance / k;
+
+                // calculate forceVector
+                Vector2 forceDirection = delta / distance;
+                Vector2 forceVector = forceDirection * forceMagnitude;
+
+                edge.source.velocity += forceVector; // Pull source toward target
+                edge.target.velocity -= forceVector; // Pull target toward source
+            }
+        }
     }
 
     private void UpdatePositions()
