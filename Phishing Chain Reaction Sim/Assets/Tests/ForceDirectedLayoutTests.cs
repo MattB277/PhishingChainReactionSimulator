@@ -138,7 +138,7 @@ public class ForceDirectedLayoutTests
         Assert.AreNotEqual(Vector2.zero, nodes[0].velocity);
         Assert.AreNotEqual(Vector2.zero, nodes[1].velocity);
     }
-    
+
     [Test]
     public void CalculateRepulsiveForces_MultipleNodes_ForceDistribution()
     {
@@ -170,7 +170,26 @@ public class ForceDirectedLayoutTests
 
         Assert.Greater(endMag, startMag, "End node should have larger velocity due to closer neighbour");
     }
-    
+
+    [Test]
+    public void CalculateAttractiveForces_PullTogether()
+    {
+        List<NetworkNode> nodes = CreateTestNodes(2);
+        nodes[0].position = new Vector2(0, 0);
+        nodes[1].position = new Vector2(10, 0);
+
+        // connect two nodes
+        ConnectTwoNodes(nodes[0], nodes[1]);
+    }
+
+    public void ConnectTwoNodes(NetworkNode a, NetworkNode b)
+    {
+        NetworkEdge edge = new NetworkEdge(a, b, 1f, EdgeType.Colleague);
+        a.connections.Add(edge);
+        NetworkEdge inverseEdge = new NetworkEdge(b, a, 1f, EdgeType.Colleague);
+        b.connections.Add(inverseEdge);
+    }
+
     private List<NetworkNode> CreateTestNodes(int nodeCount)
     {
         List<NetworkNode> nodes = new List<NetworkNode>();
