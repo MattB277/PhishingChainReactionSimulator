@@ -313,6 +313,87 @@ public class ForceDirectedLayoutTests
             "UpdatePosition should not change node position with zero velocity");
     }
 
+    [Test]
+    public void SyncVisualPositions_UpdatesGameObjectTransforms()
+    {
+        List<NetworkNode> nodes = CreateTestNodes(2);
+
+        // Create GameObjects for nodes
+        GameObject obj1 = new GameObject("Node0");
+        GameObject obj2 = new GameObject("Node1");
+        nodes[0].gameObject = obj1;
+        nodes[1].gameObject = obj2;
+
+        // Set node data positions
+        nodes[0].position = new Vector2(5, 3);
+        nodes[1].position = new Vector2(-2, 7);
+
+        layout.RunLayout(nodes, 5f);
+
+        var method = typeof(ForceDirectedLayout).GetMethod("SyncVisualPositions",
+            System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+        method.Invoke(layout, null);
+
+        Assert.AreEqual(nodes[0].position, (Vector2)obj1.transform.position,
+            "GameObject position should match node data position");
+        Assert.AreEqual(nodes[1].position, (Vector2)obj2.transform.position,
+            "GameObject position should match node data position");
+
+        // Cleanup game objects
+        UnityEngine.Object.DestroyImmediate(obj1);
+        UnityEngine.Object.DestroyImmediate(obj2);
+    }
+
+    [Test]
+    public void SyncVisualPositions_NullGameObject_NoError()
+    {
+        // Node with null GameObject
+        List<NetworkNode> nodes = CreateTestNodes(1);
+        nodes[0].gameObject = null;
+        nodes[0].position = new Vector2(5, 5);
+
+        layout.RunLayout(nodes, 5f);
+
+        var method = typeof(ForceDirectedLayout).GetMethod("SyncVisualPositions",
+            System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+
+        // Should not throw exception
+        Assert.DoesNotThrow(() => method.Invoke(layout, null),
+            "Should handle null GameObject gracefully");
+    }
+
+    [Test]
+    public void SyncVisualPositions_MixedNullAndValid_HandlesCorrectly()
+    {
+        // Some nodes with GameObjects, some without
+        List<NetworkNode> nodes = CreateTestNodes(3);
+
+        GameObject obj1 = new GameObject("Node0");
+        nodes[0].gameObject = obj1;
+        nodes[0].position = new Vector2(1, 1);
+
+        nodes[1].gameObject = null; // No GameObject
+        nodes[1].position = new Vector2(2, 2);
+
+        GameObject obj3 = new GameObject("Node2");
+        nodes[2].gameObject = obj3;
+        nodes[2].position = new Vector2(3, 3);
+
+        layout.RunLayout(nodes, 5f);
+
+        var method = typeof(ForceDirectedLayout).GetMethod("SyncVisualPositions",
+            System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+        method.Invoke(layout, null);
+
+        // Valid GameObjects should be updated
+        Assert.AreEqual(nodes[0].position, (Vector2)obj1.transform.position);
+        Assert.AreEqual(nodes[2].position, (Vector2)obj3.transform.position);
+
+        // Cleanup game objects
+        UnityEngine.Object.DestroyImmediate(obj1);
+        UnityEngine.Object.DestroyImmediate(obj3);
+    }
+
     public void ConnectTwoNodes(NetworkNode a, NetworkNode b)
     {
         NetworkEdge edge = new NetworkEdge(a, b, 1f, EdgeType.Colleague);
@@ -335,8 +416,6 @@ public class ForceDirectedLayoutTests
         }
         return nodes;
     }
-
-
 
     // A Test behaves as an ordinary method
     [Test]
