@@ -394,6 +394,147 @@ public class ForceDirectedLayoutTests
         UnityEngine.Object.DestroyImmediate(obj3);
     }
 
+    [Test]
+    public void PerformIteration_ConvergesWhenVelocityBelowThreshold()
+    {
+        // Nodes with very low velocities (near convergence)
+        List<NetworkNode> nodes = CreateTestNodes(2);
+        nodes[0].velocity = new Vector2(0.005f, 0);
+        nodes[1].velocity = new Vector2(0.003f, 0);
+        ConnectTwoNodes(nodes[0], nodes[1]);
+
+        layout.RunLayout(nodes, 5f);
+
+        var method = typeof(ForceDirectedLayout).GetMethod("PerformIteration",
+            System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+
+        // Perform several iterations
+        for (int i = 0; i < 10; i++)
+        {
+            method.Invoke(layout, null);
+            if (layout.IsLayoutComplete()) break;
+        }
+
+        // Should converge quickly with low velocities
+        Assert.IsTrue(layout.IsLayoutComplete(),
+            "Layout should converge when velocities are below threshold");
+    }
+
+    [Test]
+    public void PerformIteration_StopsAtMaxIterations()
+    {
+        // Nodes that won't converge (keep adding velocity)
+        List<NetworkNode> nodes = CreateTestNodes(2);
+        nodes[0].position = new Vector2(0, 0);
+        nodes[1].position = new Vector2(0.5f, 0); // Close together for strong repulsion
+
+        layout.RunLayout(nodes, 5f);
+
+        var method = typeof(ForceDirectedLayout).GetMethod("PerformIteration",
+            System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+
+        // Run exactly maxIterations (default 300)
+        for (int i = 0; i < 300; i++)
+        {
+            if (layout.IsLayoutComplete()) break;
+            method.Invoke(layout, null);
+        }
+
+        // Should stop at max iterations
+        Assert.IsTrue(layout.IsLayoutComplete(),
+            "Layout should stop after max iterations");
+    }
+
+    [Test]
+    public void SingleNodeGraph_NoForces_NoMovement()
+    {
+        // Arrange
+        List<NetworkNode> nodes = CreateTestNodes(1);
+        nodes[0].position = new Vector2(5, 5);
+        Vector2 initialPosition = nodes[0].position;
+
+        layout.RunLayout(nodes, 5f);
+
+        // Run both force calculations
+        var repelMethod = typeof(ForceDirectedLayout).GetMethod("CalculateRepulsiveForces",
+            System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+        var attractMethod = typeof(ForceDirectedLayout).GetMethod("CalculateAttractiveForces",
+            System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+
+        repelMethod.Invoke(layout, null);
+        attractMethod.Invoke(layout, null);
+
+        // Single node should have no forces applied
+        Assert.AreEqual(Vector2.zero, nodes[0].velocity,
+            "Single node should have zero velocity (no forces)");
+    }
+
+    [Test]
+    public void LargeGraph_PerformanceAcceptable()
+    {
+        // Create a larger graph (100 nodes)
+        List<NetworkNode> nodes = CreateTestNodes(100);
+
+        // Spread nodes out to avoid all being at origin
+        for (int i = 0; i < nodes.Count; i++)
+        {
+            float angle = (i / (float)nodes.Count) * Mathf.PI * 2f;
+            nodes[i].position = new Vector2(
+                Mathf.Cos(angle) * 10f,
+                Mathf.Sin(angle) * 10f
+            );
+        }
+
+        layout.RunLayout(nodes, 15f);
+
+        var method = typeof(ForceDirectedLayout).GetMethod("CalculateRepulsiveForces",
+            System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+
+        // Measure time for one iteration
+        var startTime = System.Diagnostics.Stopwatch.StartNew();
+        method.Invoke(layout, null);
+        startTime.Stop();
+
+        // Should complete in reasonable time (< 100ms for 100 nodes)
+        Assert.Less(startTime.ElapsedMilliseconds, 100,
+            "100-node repulsion calculation should take < 100ms");
+    }
+
+    [Test]
+    public void DisconnectedGraph_OnlyRepulsionApplied()
+    {
+        // Nodes with no connections
+        List<NetworkNode> nodes = CreateTestNodes(3);
+        nodes[0].position = new Vector2(0, 0);
+        nodes[1].position = new Vector2(1, 0);
+        nodes[2].position = new Vector2(0, 1);
+
+        layout.RunLayout(nodes, 5f);
+
+        // Calculate both forces
+        var repelMethod = typeof(ForceDirectedLayout).GetMethod("CalculateRepulsiveForces",
+            System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+        var attractMethod = typeof(ForceDirectedLayout).GetMethod("CalculateAttractiveForces",
+            System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+
+        repelMethod.Invoke(layout, null);
+
+        Vector2 velocityAfterRepulsion0 = nodes[0].velocity;
+        Vector2 velocityAfterRepulsion1 = nodes[1].velocity;
+
+        attractMethod.Invoke(layout, null);
+
+        // Repulsion should add velocity
+        Assert.AreNotEqual(Vector2.zero, velocityAfterRepulsion0,
+            "Nodes should repel even without connections");
+
+        // Attraction should not change velocity (no connections)
+        Assert.AreEqual(velocityAfterRepulsion0, nodes[0].velocity,
+            "Attraction should not affect disconnected nodes");
+        Assert.AreEqual(velocityAfterRepulsion1, nodes[1].velocity,
+            "Attraction should not affect disconnected nodes");
+    }
+
     public void ConnectTwoNodes(NetworkNode a, NetworkNode b)
     {
         NetworkEdge edge = new NetworkEdge(a, b, 1f, EdgeType.Colleague);
