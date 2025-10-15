@@ -216,7 +216,13 @@ public class ForceDirectedLayout : MonoBehaviour
 
     private void UpdatePositions()
     {
-        throw new NotImplementedException();
+        foreach (NetworkNode node in nodes)
+        {
+            // * by deltaTime for displacement
+            node.position += node.velocity * Time.deltaTime;
+            // 0.85 damping reduces velocity by 15% each frame
+            node.velocity *= damping;
+        }
     }
 
     private bool CheckConvergence()
