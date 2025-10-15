@@ -274,23 +274,43 @@ public class ForceDirectedLayoutTests
     {
         List<NetworkNode> nodes = CreateTestNodes(1);
         nodes[0].velocity = new Vector2(100, 0); // High velocity
-        
+
         float initialSpeed = nodes[0].velocity.magnitude;
-        
+
         layout.RunLayout(nodes, 5f);
-        
+
         var method = typeof(ForceDirectedLayout).GetMethod("UpdatePositions",
             System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
         // Apply damping multiple times
         method.Invoke(layout, null);
         float speedAfter1 = nodes[0].velocity.magnitude;
-        
+
         method.Invoke(layout, null);
         float speedAfter2 = nodes[0].velocity.magnitude;
-        
+
         // Velocity should decrease each time
         Assert.Less(speedAfter1, initialSpeed, "Velocity should decrease after first damping");
         Assert.Less(speedAfter2, speedAfter1, "Velocity should continue decreasing");
+    }
+
+    [Test]
+    public void UpdatePositions_ZeroVelocity_NoMovement()
+    {
+        List<NetworkNode> nodes = CreateTestNodes(1);
+        nodes[0].position = new Vector2(5, 5);
+        nodes[0].velocity = Vector2.zero;
+
+        Vector2 initialPosition = nodes[0].position;
+
+        layout.RunLayout(nodes, 5f);
+
+        var method = typeof(ForceDirectedLayout).GetMethod("UpdatePositions",
+            System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+        method.Invoke(layout, null);
+
+        // Position should not change
+        Assert.AreEqual(initialPosition, nodes[0].position,
+            "UpdatePosition should not change node position with zero velocity");
     }
 
     public void ConnectTwoNodes(NetworkNode a, NetworkNode b)
