@@ -1,7 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System;
-using Codice.Client.Common.TreeGrouper;
 
 // implement force directed graph layout using Fruchterman-Reingold algorithm
 public class ForceDirectedLayout : MonoBehaviour
@@ -125,7 +124,13 @@ public class ForceDirectedLayout : MonoBehaviour
     }
     private void SyncVisualPositions()
     {
-        throw new NotImplementedException();
+        foreach (NetworkNode node in nodes)
+        {
+            if (node.gameObject != null)
+            {
+                node.gameObject.transform.position = node.position;
+            }
+        }
     }
 
     // Calculate repulsive forces between all node pairs, using distance cutoff and squared distance optimisations. 
