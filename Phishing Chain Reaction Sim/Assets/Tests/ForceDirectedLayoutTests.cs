@@ -244,6 +244,55 @@ public class ForceDirectedLayoutTests
         }
     }
 
+    [Test]
+    public void UpdatePositions_AppliesVelocityToPosition()
+    {
+        List<NetworkNode> nodes = CreateTestNodes(1);
+        nodes[0].position = new Vector2(0, 0);
+        nodes[0].velocity = new Vector2(10, 5); // Moving right and up
+        
+        Vector2 initialPosition = nodes[0].position;
+        
+        layout.RunLayout(nodes, 5f);
+        
+        var method = typeof(ForceDirectedLayout).GetMethod("UpdatePositions",
+            System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+        method.Invoke(layout, null);
+        
+        // Position should have changed based on velocity
+        Assert.AreNotEqual(initialPosition, nodes[0].position, 
+            "Position should change when velocity is applied");
+        
+        // Position change should be in direction of velocity
+        Vector2 displacement = nodes[0].position - initialPosition;
+        Assert.Greater(displacement.x, 0, "Should move in positive X direction");
+        Assert.Greater(displacement.y, 0, "Should move in positive Y direction");
+    }
+
+    [Test]
+    public void UpdatePositions_AppliesDamping()
+    {
+        List<NetworkNode> nodes = CreateTestNodes(1);
+        nodes[0].velocity = new Vector2(100, 0); // High velocity
+        
+        float initialSpeed = nodes[0].velocity.magnitude;
+        
+        layout.RunLayout(nodes, 5f);
+        
+        var method = typeof(ForceDirectedLayout).GetMethod("UpdatePositions",
+            System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+        // Apply damping multiple times
+        method.Invoke(layout, null);
+        float speedAfter1 = nodes[0].velocity.magnitude;
+        
+        method.Invoke(layout, null);
+        float speedAfter2 = nodes[0].velocity.magnitude;
+        
+        // Velocity should decrease each time
+        Assert.Less(speedAfter1, initialSpeed, "Velocity should decrease after first damping");
+        Assert.Less(speedAfter2, speedAfter1, "Velocity should continue decreasing");
+    }
+
     public void ConnectTwoNodes(NetworkNode a, NetworkNode b)
     {
         NetworkEdge edge = new NetworkEdge(a, b, 1f, EdgeType.Colleague);
