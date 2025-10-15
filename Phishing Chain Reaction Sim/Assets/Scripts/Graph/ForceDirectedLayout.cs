@@ -103,6 +103,10 @@ public class ForceDirectedLayout : MonoBehaviour
     // perform one iteration of the force directed algorithm
     private void PerformIteration()
     {
+        if (currentIteration % 10 == 0 && showDebugInfo ) // Every 10 iterations
+            {
+                Debug.Log($"Iteration {currentIteration}");
+            }
         // apply all forces
         CalculateRepulsiveForces();
         CalculateAttractiveForces();
