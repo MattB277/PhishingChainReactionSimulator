@@ -177,8 +177,8 @@ public class ForceDirectedLayout : MonoBehaviour
                 Vector2 forceDirection = delta / distance;
                 Vector2 forceVector = forceDirection * forceMagnitude;
 
-                nodes[i].velocity -= forceVector;
-                nodes[j].velocity += forceVector;
+                nodes[i].velocity += forceVector;
+                nodes[j].velocity -= forceVector;
             }
         }
     }
