@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System;
+using System.Linq;
 
 // implement force directed graph layout using Fruchterman-Reingold algorithm
 public class ForceDirectedLayout : MonoBehaviour
@@ -44,6 +45,7 @@ public class ForceDirectedLayout : MonoBehaviour
 
     private List<NetworkNode> nodes;
     private bool isLayoutComplete = false;
+    private float maxVelocity = float.MinValue;
     private int currentIteration = 0;
     private float k; // optimal distance constant
 
@@ -111,13 +113,14 @@ public class ForceDirectedLayout : MonoBehaviour
         CalculateRepulsiveForces();
         CalculateAttractiveForces();
 
-        // update positions based on new velocities
+        maxVelocity = 0f;
+        // update positions based on new velocities and update max velocity
         UpdatePositions();
 
         currentIteration++;
 
         // Check convergence or max iterations reached
-        if (CheckConvergence() || currentIteration >= maxIterations)
+        if (maxVelocity < convergenceThreshold || currentIteration >= maxIterations)
         {
             isLayoutComplete = true;
             enabled = false;
@@ -149,8 +152,6 @@ public class ForceDirectedLayout : MonoBehaviour
 
         for (int i = 0; i < nodes.Count; i++)
         {
-            // reset force accumulator for this node
-            Vector2 totalForce = Vector2.zero;
 
             for (int j = 0; j < nodes.Count; j++)
             {
@@ -223,20 +224,22 @@ public class ForceDirectedLayout : MonoBehaviour
         }
     }
 
+    // update logical node positions and find maxVelocity for this iteration
     private void UpdatePositions()
     {
         foreach (NetworkNode node in nodes)
         {
+            // track max velocity for this iteration
+            if (node.velocity.magnitude > maxVelocity)
+            {
+                maxVelocity = node.velocity.magnitude;
+            }
+
             // * by deltaTime for displacement
             node.position += node.velocity * Time.deltaTime;
             // 0.85 damping reduces velocity by 15% each frame
             node.velocity *= damping;
         }
-    }
-
-    private bool CheckConvergence()
-    {
-        throw new NotImplementedException();
     }
 
     public bool IsLayoutComplete()
