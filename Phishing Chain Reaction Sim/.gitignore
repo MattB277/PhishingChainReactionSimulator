@@ -59,9 +59,11 @@ ExportedObj/
 *.pidb.meta
 *.pdb.meta
 *.mdb.meta
+_Recovery.meta
 
 # Unity3D generated file on crash reports
 sysinfo.txt
+_Recovery/
 
 # Mono auto generated files
 mono_crash.*
