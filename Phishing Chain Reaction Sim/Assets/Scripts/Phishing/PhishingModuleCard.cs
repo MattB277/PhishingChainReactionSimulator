@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(CanvasGroup))]
@@ -35,12 +36,39 @@ public class PhishingModuleCard : MonoBehaviour
             if (cardBackground != null) cardBackground.color = module.cardColour; 
         }
     }
+    public void OnBeginDrag(PointerEventData eventData)
+        {
+            originalParent = transform.parent; 
+            canvasGroup.alpha = 0.6f;
+            canvasGroup.blocksRaycasts = false; 
+            transform.SetParent(canvas.transform); // Render on top
+        }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+        public void OnDrag(PointerEventData eventData)
+        {
+            rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
+        }
+
+        public void OnEndDrag(PointerEventData eventData)
+        {
+            canvasGroup.alpha = 1f;
+            canvasGroup.blocksRaycasts = true;
+
+            if (eventData.pointerEnter != null)
+            {
+                MessageDropZone dropZone = eventData.pointerEnter.GetComponentInParent<MessageDropZone>();
+                // If dropped on the MessageDropZone, place the module there
+                if (dropZone != null)
+                {
+                    dropZone.PlaceModule(this);
+                    return;
+                }
+            }
+            
+            // If drop failed, find the palette to return the card
+            ModulePalette palette = FindObjectOfType<ModulePalette>();
+            palette?.ReturnModule(this); 
+        }
 
     // Update is called once per frame
     void Update()
