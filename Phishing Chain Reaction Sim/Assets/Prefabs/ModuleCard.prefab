@@ -147,6 +147,8 @@ GameObject:
   - component: {fileID: 2942015564154799968}
   - component: {fileID: 648317937548217035}
   - component: {fileID: 4094405187667888814}
+  - component: {fileID: -3437167827787162294}
+  - component: {fileID: -4598375743645641513}
   m_Layer: 5
   m_Name: ModuleCard
   m_TagString: Untagged
@@ -213,6 +215,33 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!225 &-3437167827787162294
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1413374512592359337}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &-4598375743645641513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1413374512592359337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a8b8a45eca948643a55f163fa67780c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: PhishingSimulator::PhishingModuleCard
+  displayText: {fileID: 0}
+  statsText: {fileID: 0}
+  cardBackground: {fileID: 0}
 --- !u!1 &5455590481752258572
 GameObject:
   m_ObjectHideFlags: 0
