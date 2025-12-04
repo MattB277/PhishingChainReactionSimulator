@@ -12,4 +12,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23386a993e0d8db459403aebea288976, type: 3}
   m_Name: ModuleDatabase
   m_EditorClassIdentifier: PhishingSimulator::ModuleDatabase
-  allModules: []
+  allModules:
+  - id: 1
+    displayText: Test
+    postText: Test Post text
+    type: 0
+    successModifier: 0.23
+    suspicionModifier: -0.3
+    unlockLevel: 1
+    techniqueName: Impersonation
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: 2
+    displayText: Test Card 2
+    postText: Hook Test Text
+    type: 2
+    successModifier: 0.23
+    suspicionModifier: -0.3
+    unlockLevel: 1
+    techniqueName: Tactic
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}

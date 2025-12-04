@@ -1,27 +1,34 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using TMPro;
 
 [RequireComponent(typeof(CanvasGroup))]
-public class PhishingModuleCard : MonoBehaviour
+public class PhishingModuleCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     public PhishingModule Module { get; private set; }
 
     [Header("References")]
-    [SerializeField] private Text displayText;
-    [SerializeField] private Text statsText;
+    [SerializeField] private TextMeshProUGUI displayText;
+    [SerializeField] private TextMeshProUGUI statsText;
     [SerializeField] private Image cardBackground;
     
     private Canvas canvas;
     private RectTransform rectTransform;
     private CanvasGroup canvasGroup;
-    private Transform originalParent;
+    private Transform originalParent;  
+    private int originalSiblingIdx; // Keep location in ModuleGrid
 
     void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
-        canvas = GetComponentInParent<Canvas>(); 
+
+        Canvas[] canvases = GetComponentsInParent<Canvas>();
+        if (canvases.Length > 0)
+        {
+            canvas = canvases[canvases.Length -1];
+        }
     }
 
     // Called by ModulePalette to set the data
@@ -31,22 +38,27 @@ public class PhishingModuleCard : MonoBehaviour
         if (displayText != null) displayText.text = module.displayText;
         if (statsText != null) 
         {
-            statsText.text = $"S:{Mathf.RoundToInt(module.successModifier * 100)}% / R:{Mathf.RoundToInt(module.suspicionModifier * 100)}%";
-            // Customize visual properties based on data
+            statsText.text = $"Success:{Mathf.RoundToInt(module.successModifier * 100)}% \n Suspicion:{Mathf.RoundToInt(module.suspicionModifier * 100)}%";
+            // Set colour of card based on level?
             if (cardBackground != null) cardBackground.color = module.cardColour; 
         }
     }
+
     public void OnBeginDrag(PointerEventData eventData)
         {
             originalParent = transform.parent; 
+            originalSiblingIdx = transform.GetSiblingIndex();
+
+            transform.SetParent(canvas.transform, true); // Pull out of scrollview and into root canvas
+
             canvasGroup.alpha = 0.6f;
             canvasGroup.blocksRaycasts = false; 
-            transform.SetParent(canvas.transform); // Render on top
         }
 
         public void OnDrag(PointerEventData eventData)
         {
-            rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
+            transform.position = eventData.position; // move to exact mouse position while dragging
+
         }
 
         public void OnEndDrag(PointerEventData eventData)
@@ -64,15 +76,21 @@ public class PhishingModuleCard : MonoBehaviour
                     return;
                 }
             }
-            
-            // If drop failed, find the palette to return the card
-            ModulePalette palette = FindObjectOfType<ModulePalette>();
-            palette?.ReturnModule(this); 
-        }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+            MessageDropZone originalDropZone = originalParent.GetComponent<MessageDropZone>();
+
+            if (originalDropZone != null)
+                {
+                    // clean up list inside dropZone before returning to palette
+                    originalDropZone.RemoveModule(this);
+                }
+            
+            ModulePalette palette = FindFirstObjectByType<ModulePalette>();
+
+            if (palette != null)
+            {
+                // palette handles setting parent back to ModuleGrid
+                palette.ReturnModule(this);
+            }
+        }
 }
