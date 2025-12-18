@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23386a993e0d8db459403aebea288976, type: 3}
+  m_Name: ModuleDatabase
+  m_EditorClassIdentifier: PhishingSimulator::ModuleDatabase
+  allModules:
+  - id: 1
+    displayText: Test
+    postText: Test Post text
+    type: 0
+    successModifier: 0.23
+    suspicionModifier: -0.3
+    unlockLevel: 1
+    techniqueName: Impersonation
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: 2
+    displayText: Test Card 2
+    postText: Hook Test Text
+    type: 2
+    successModifier: 0.23
+    suspicionModifier: -0.3
+    unlockLevel: 1
+    techniqueName: Tactic
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
