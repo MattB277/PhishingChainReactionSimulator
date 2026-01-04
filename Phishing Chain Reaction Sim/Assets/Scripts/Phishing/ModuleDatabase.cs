@@ -15,7 +15,7 @@ public class ModuleDatabase : ScriptableObject
     // Get all modules unlocked by given level
     public List<PhishingModule> GetUnlockedModules(int currentLevel)
     {
-        return allModules.Where(m => m.unlockLevel <= currentLevel).ToList();
+        return allModules.Where(m => m.unlockLevel == currentLevel).ToList();
     }
 
     // Get modules of a given type that are unlocked.
