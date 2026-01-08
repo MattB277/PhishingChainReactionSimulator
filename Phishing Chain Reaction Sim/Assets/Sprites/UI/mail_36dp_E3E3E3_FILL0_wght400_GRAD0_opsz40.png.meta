@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: b6a44f295c5bbc642b953e637c58a665
+guid: 2c4f3d80a06f1624bbfc98c10e2522df
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 832964117165764358
-    second: share_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24_0
+      213: -4837013284676361907
+    second: mail_36dp_E3E3E3_FILL0_wght400_GRAD0_opsz40_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: share_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24_0
+      name: mail_36dp_E3E3E3_FILL0_wght400_GRAD0_opsz40_0
       rect:
         serializedVersion: 2
-        x: 1
-        y: 1
-        width: 20
-        height: 22
+        x: 2
+        y: 5
+        width: 32
+        height: 26
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 60fef4a83784f8b00800000000000000
-      internalID: 832964117165764358
+      spriteID: d4125019b0a7fdcb0800000000000000
+      internalID: -4837013284676361907
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      share_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24_0: 832964117165764358
+      mail_36dp_E3E3E3_FILL0_wght400_GRAD0_opsz40_0: -4837013284676361907
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

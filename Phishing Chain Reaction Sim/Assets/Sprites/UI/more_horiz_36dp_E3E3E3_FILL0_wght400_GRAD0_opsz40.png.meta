@@ -1,10 +1,16 @@
 fileFormatVersion: 2
-guid: b6a44f295c5bbc642b953e637c58a665
+guid: cd880f83b41bd054da155657d83ed4ba
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 832964117165764358
-    second: share_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24_0
+      213: 3921339706318524885
+    second: more_horiz_36dp_E3E3E3_FILL0_wght400_GRAD0_opsz40_0
+  - first:
+      213: -2959853473700002120
+    second: more_horiz_36dp_E3E3E3_FILL0_wght400_GRAD0_opsz40_1
+  - first:
+      213: 7763355015852023125
+    second: more_horiz_36dp_E3E3E3_FILL0_wght400_GRAD0_opsz40_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +119,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: share_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24_0
+      name: more_horiz_36dp_E3E3E3_FILL0_wght400_GRAD0_opsz40_0
       rect:
         serializedVersion: 2
-        x: 1
-        y: 1
-        width: 20
-        height: 22
+        x: 5
+        y: 15
+        width: 7
+        height: 6
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +134,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 60fef4a83784f8b00800000000000000
-      internalID: 832964117165764358
+      spriteID: 5d110cecfa56b6630800000000000000
+      internalID: 3921339706318524885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: more_horiz_36dp_E3E3E3_FILL0_wght400_GRAD0_opsz40_1
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 15
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b6c7e892fc7ce6d0800000000000000
+      internalID: -2959853473700002120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: more_horiz_36dp_E3E3E3_FILL0_wght400_GRAD0_opsz40_2
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 15
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55d5b11414afcbb60800000000000000
+      internalID: 7763355015852023125
       vertices: []
       indices: 
       edges: []
@@ -148,7 +198,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      share_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24_0: 832964117165764358
+      more_horiz_36dp_E3E3E3_FILL0_wght400_GRAD0_opsz40_0: 3921339706318524885
+      more_horiz_36dp_E3E3E3_FILL0_wght400_GRAD0_opsz40_1: -2959853473700002120
+      more_horiz_36dp_E3E3E3_FILL0_wght400_GRAD0_opsz40_2: 7763355015852023125
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
