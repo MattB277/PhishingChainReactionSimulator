@@ -62,7 +62,7 @@ public class ScenarioManager : MonoBehaviour
         {
             return scenarios[CurrentLevelIdx].winThreshold;
         }
-        Debug.LogWarning($"ScenarioManager: Fallback for winThreshold on level {level}");
+        Debug.LogWarning($"ScenarioManager: Fallback for winThreshold on level {CurrentLevelIdx}");
         return 50f; // fallback to 50%
     }
 
