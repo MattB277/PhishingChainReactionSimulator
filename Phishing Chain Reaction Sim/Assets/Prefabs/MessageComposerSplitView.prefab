@@ -258,6 +258,7 @@ GameObject:
   - component: {fileID: 2902354710219864255}
   - component: {fileID: 4191953671647995689}
   - component: {fileID: 1751465784269776047}
+  - component: {fileID: 1649410020807903789}
   m_Layer: 5
   m_Name: RightComposer
   m_TagString: Untagged
@@ -372,6 +373,26 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &1649410020807903789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 976196904048901799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0809cb80f425ce7478fb70e076f554c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: PhishingSimulator::PhishingComposer
+  dropZone: {fileID: 9041704394075171328}
+  palette: {fileID: 4085266821194258522}
+  successSlider: {fileID: 2701209281518225413}
+  suspicionSlider: {fileID: 3126216980715503010}
+  resultPanel: {fileID: 0}
+  resultText: {fileID: 0}
+  nextLevelButton: {fileID: 0}
+  closeResultButton: {fileID: 0}
 --- !u!1 &1098097579228231662
 GameObject:
   m_ObjectHideFlags: 0
@@ -704,7 +725,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4783752390848630283}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1649410020807903789}
+        m_TargetAssemblyTypeName: PhishingComposer, PhishingSimulator
+        m_MethodName: SendPost
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &6396333742588616611
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1095,9 +1128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: PhishingSimulator::ScenarioManager
   scenarioText: {fileID: 5938575950794934569}
-  levelScenarios:
-  - 'Target: Remote Job Seekers (DM) Goal: Lure the target into applying for a fake
-    "High Salary" role to steal personal data.'
+  scenarios: []
 --- !u!1 &3548317505265784462
 GameObject:
   m_ObjectHideFlags: 0
@@ -1457,6 +1488,7 @@ GameObject:
   - component: {fileID: 6083009874784912451}
   - component: {fileID: 8320419798815453925}
   - component: {fileID: 4028863235036246758}
+  - component: {fileID: 9041704394075171328}
   m_Layer: 5
   m_Name: MessageDropZone
   m_TagString: Untagged
@@ -1567,6 +1599,18 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &9041704394075171328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4587794232045676088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 529b7e3b2635c3141ad0f004ba282a77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: PhishingSimulator::MessageDropZone
 --- !u!1 &4950187408827207326
 GameObject:
   m_ObjectHideFlags: 0
@@ -1926,8 +1970,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 9196905835105139468}
   m_HandleRect: {fileID: 3064082351449058644}
   m_Direction: 0
-  m_Value: 0.5
-  m_Size: 0
+  m_Value: 0
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2371,8 +2415,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1338032691232960443}
   m_HandleRect: {fileID: 5630168958437572080}
   m_Direction: 2
-  m_Value: 0.9999968
-  m_Size: 0
+  m_Value: 0
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2561,6 +2605,7 @@ GameObject:
   - component: {fileID: 6889188435218558738}
   - component: {fileID: 2531204843344530165}
   - component: {fileID: 6940564230238872450}
+  - component: {fileID: 4085266821194258522}
   m_Layer: 5
   m_Name: LeftPalette
   m_TagString: Untagged
@@ -2646,6 +2691,21 @@ MonoBehaviour:
   m_FlexibleWidth: 1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!114 &4085266821194258522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7709980745572915601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 865aebfbba621f84c8e4421d1e29d719, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: PhishingSimulator::ModulePalette
+  database: {fileID: 11400000, guid: 5b0a7927c726e0f4b828c546ba2f6038, type: 2}
+  moduleCardPrefab: {fileID: 1413374512592359337, guid: b5d44202376a2f44792b542ecca0d3ab, type: 3}
+  moduleGridParent: {fileID: 5788414097087685114}
 --- !u!1 &7871778912256009483
 GameObject:
   m_ObjectHideFlags: 0
@@ -2842,7 +2902,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4003418578646172834}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1649410020807903789}
+        m_TargetAssemblyTypeName: PhishingComposer, PhishingSimulator
+        m_MethodName: ClearComposer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &5681981034701241416
 MonoBehaviour:
   m_ObjectHideFlags: 0

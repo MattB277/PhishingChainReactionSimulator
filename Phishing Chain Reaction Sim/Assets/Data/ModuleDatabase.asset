@@ -33,3 +33,23 @@ MonoBehaviour:
     techniqueName: Tactic
     cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
     icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: 3
+    displayText: Perfect Success Test Card
+    postText: Post Text redundant
+    type: 2
+    successModifier: 1
+    suspicionModifier: -1
+    unlockLevel: 1
+    techniqueName: Tactic
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: 4
+    displayText: Level 2 Card
+    postText: Post Text redundant
+    type: 2
+    successModifier: 1
+    suspicionModifier: -1
+    unlockLevel: 2
+    techniqueName: Tactic
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
