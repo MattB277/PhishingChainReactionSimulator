@@ -80,14 +80,21 @@ public class PhishingComposer : MonoBehaviour
         }
     }
 
-    private void AdvanceLevel()
+    public void AdvanceLevel()
     {
         resultPanel.SetActive(false);
         ClearComposer();
-        int nextLevelIdx = ScenarioManager.Instance.CurrentLevelIdx + 1;
+        int nextLevelIdx = ScenarioManager.Instance.CurrentLevelIdx + 2; // Why is this +2? CurrentLevelIdx is being decremented somewhere
         ScenarioManager.Instance.LoadScenario(nextLevelIdx);
         palette.PopulatePallete(nextLevelIdx);
         Debug.Log($"Finished {ScenarioManager.Instance.CurrentLevelIdx}. Advanced to level index {nextLevelIdx}");
+    }
+
+    public void RetryLevel()
+    {
+        resultPanel.SetActive(false);
+        ClearComposer();
+        Debug.Log($"Retry failed level");
     }
 
     // Update is called once per frame
