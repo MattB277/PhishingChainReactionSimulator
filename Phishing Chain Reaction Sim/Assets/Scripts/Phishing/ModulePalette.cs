@@ -23,10 +23,21 @@ public class ModulePalette : MonoBehaviour
 
     public void PopulatePallete(int level)
     {
+        Debug.Log($"Loading Palette for level {level}");
         if (database == null || moduleCardPrefab== null || moduleGridParent == null)
         {
             Debug.LogError("ModulePallete dependancies are not set in Inspector");
         }
+
+        // Remove old cards
+        foreach (var card in activeCards.Values)
+        {
+            if (card != null)
+            {
+                Destroy(card.gameObject);
+            }
+        }
+        activeCards.Clear(); // clear active cards dictionary
 
         List<PhishingModule> modules = database.GetUnlockedModules(level);
 
