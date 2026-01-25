@@ -37,7 +37,7 @@ public class ReportManager : MonoBehaviour
         if (currentTarget == null) return;
 
         // Find which toggle is active
-        PhishReason selectedReason = PhishReason.Spam;
+        PhishReason selectedReason = PhishReason.Safe;
 
         for (int i = 0; i < reasonToggles.Length; i++)
         {
