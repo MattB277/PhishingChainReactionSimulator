@@ -49,11 +49,20 @@ public class ReportManager : MonoBehaviour
                 break;
             }
         }
+        // Return early if no reason chosen
+        if (selectedReason == PhishReason.Safe) return;
+        
         // Check answer
         EvaluateDecision(selectedReason);
         
         // Close modal panel
         modalPanel.SetActive(false);
+
+        // Notify central manager that this post has been handled
+        // TODO: Add completion condition (e.g. all phish posts reported)
+        // For now, each submission counts as stage complete
+        if (BlueTeamManager.Instance != null)
+            BlueTeamManager.Instance.NotifyStageComplete();
     }
 
     private void EvaluateDecision(PhishReason userReason)
