@@ -1,96 +1,51 @@
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.UI;
 using System.Collections.Generic;
 
-/// <summary>
-/// Drop zone for phishing module cards
-/// Acccepts any module card and manages order based on type
-/// </summary>
-public class MessageDropZone : MonoBehaviour, IDropHandler
+public class MessageDropZone : BaseDropZone
 {
-    [Header("References")]
-    private readonly List<PhishingModuleCard> messageCards = new List<PhishingModuleCard>(); // cards currently in the drop zone
-    private PhishingComposer composer; // manager script
+    private PhishingComposer composer; 
 
     void Awake()
     {
-        // find the manager script on the parent 
         composer = GetComponentInParent<PhishingComposer>();
+        maxCapacity = 5;
     }
 
-    public void OnDrop(PointerEventData eventData)
+    protected override void OnCardAdded(BaseDraggableCard card)
     {
-        PhishingModuleCard card = eventData.pointerDrag?.GetComponent<PhishingModuleCard>();
-        if (card != null)
-        {
-            PlaceModule(card);
-        }
-    }
-
-    public void PlaceModule(PhishingModuleCard card)
-    {
-        // check if card is already in list to prevent duplicates
-        if (messageCards.Contains(card))
-        {
-            messageCards.Remove(card);
-        }
-        // Set parent to the drop zone
-        card.transform.SetParent(this.transform);
-        // reset position so card snaps into place correctly
-        card.transform.localScale = Vector3.one;
-        card.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
-        card.transform.localRotation = Quaternion.identity;
-        // add to list and notify composer of update
-        messageCards.Add(card);
+        // Tell the manager to recalculate stats based on new card.
         NotifyComposer();
     }
 
-    public void RemoveModule(PhishingModuleCard card)
+    protected override void OnCardRemoved(BaseDraggableCard card)
     {
-        if (messageCards.Contains(card))
-        {
-            messageCards.Remove(card);
-            composer?.OnModulesChanged();
-        }
+        // Tell the manager to recalculate stats based on removed card.
+        NotifyComposer();
     }
 
-    // When Clear is clicked on the composer, send all cards back to the ModuleGrid
     public void ClearAllModules()
     {
-        ModulePalette palette = FindAnyObjectByType<ModulePalette>();
-
-        // create copy of cards in drop zone
-        var cardsToRemove = new List<PhishingModuleCard>(messageCards);
+        // Copy list since ReturnToPalette will modify currentCards via RemoveCard
+        var cardsToRemove = new List<BaseDraggableCard>(currentCards);
 
         foreach (var card in cardsToRemove)
         {
-            if (palette != null)
-            {
-                palette.ReturnModule(card);
-            }
-            else
-            {
-                // Just destroy objects if palette is missing
-                Destroy(card.gameObject);
-            }
+            card.ReturnToPalette(); // Handles RemoveCard + visual reparent
         }
 
-        messageCards.Clear();
+        // Single notification after all cards are cleared
         NotifyComposer();
     }
 
-    // helper to extract just the data from the card list
-    // used to calculate stats based on cards in DZ.
     public List<PhishingModule> GetCurrentModuleData()
     {
         List<PhishingModule> dataList = new List<PhishingModule>();
 
-        foreach (var card in messageCards)
+        foreach (var baseCard in currentCards)
         {
-            if (card != null && card.Module != null)
+            if (baseCard is PhishingModuleCard pCard && pCard.Module != null)
             {
-                dataList.Add(card.Module);
+                dataList.Add(pCard.Module);
             }
         }
         return dataList;
@@ -98,13 +53,6 @@ public class MessageDropZone : MonoBehaviour, IDropHandler
 
     private void NotifyComposer()
     {
-        if (composer != null)
-        {
-            composer.OnModulesChanged();
-        }
-        else
-        {
-            Debug.LogWarning("MessageDropZone: Could not find PhishingComposer in parent");
-        }
+        if (composer != null) composer.OnModulesChanged();
     }
 }
