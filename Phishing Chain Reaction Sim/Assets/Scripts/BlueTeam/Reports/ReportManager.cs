@@ -61,8 +61,8 @@ public class ReportManager : MonoBehaviour
         // Notify central manager that this post has been handled
         // TODO: Add completion condition (e.g. all phish posts reported)
         // For now, each submission counts as stage complete
-        if (BlueTeamManager.Instance != null)
-            BlueTeamManager.Instance.NotifyStageComplete();
+        //if (BlueTeamManager.Instance != null)
+        //    BlueTeamManager.Instance.NotifyStageComplete();
     }
 
     private void EvaluateDecision(PhishReason userReason)
