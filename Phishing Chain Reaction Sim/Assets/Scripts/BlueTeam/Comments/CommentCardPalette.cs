@@ -7,7 +7,7 @@ public class CommentCardPalette : BasePalette
     [SerializeField] private GameObject commentCardPrefab;
     [SerializeField] private CommentDatabase database;
     
-    public override void PopulatePallete(int stage)
+    public override void PopulatePallete(int stage = 0)
     {
         // clear existing cards
         foreach (Transform child in contentParent)

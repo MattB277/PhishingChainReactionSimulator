@@ -9,6 +9,8 @@ public class CommentManager : MonoBehaviour
     [Header("UI References")]
     public GameObject modalPanel;
     public TextMeshProUGUI targetPostText;
+    [Header("Palette Reference")]
+    public CommentCardPalette palette;
     
     [Header("Drop Zones")]
     public CommentDropZone categoryZone;
@@ -34,7 +36,13 @@ public class CommentManager : MonoBehaviour
 
     private void PopulatePalette()
     {
-        
+        if (palette != null)
+        {
+            palette.PopulatePallete();
+        } else
+        {
+            Debug.LogError("CommentCardPalette reference is missing in CommentManager.");
+        }
     }
 
     public void SubmitComment()

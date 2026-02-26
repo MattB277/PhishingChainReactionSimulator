@@ -7,5 +7,5 @@ public abstract class BasePalette : MonoBehaviour
     [SerializeField] protected Transform contentParent; // The Grid/Scroll Content
 
     public Transform ContentParent => contentParent;
-    public abstract void PopulatePallete(int stage); // Each palette will implement its own population logic based on stage or level
+    public abstract void PopulatePallete(int stage = 0); // Each palette will implement its own population logic based on stage or level
 }
