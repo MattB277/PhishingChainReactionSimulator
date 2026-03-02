@@ -4,7 +4,7 @@ using System.Collections.Generic;
 public class TimelineManager : MonoBehaviour
 {
     [Header("Data Source")]
-    public FeedPostDatabase database;
+    public TimelinePostDatabase database;
 
     [Header("UI References")]
     public GameObject postPrefab;
@@ -21,7 +21,7 @@ public class TimelineManager : MonoBehaviour
         }
 
         // Fetch post data from scriptableObject
-        List<TimelinePost> stagePosts = database.GetPostsForStage(stage);
+        List<TimelinePostData> stagePosts = database.GetPostsForStage(stage);
 
         if (stagePosts.Count == 0)
         {
@@ -30,19 +30,31 @@ public class TimelineManager : MonoBehaviour
         }
 
         // Spawn GameObjects
-        foreach (TimelinePost data in stagePosts)
+        foreach (TimelinePostData data in stagePosts)
         {
             // Create physical object
             GameObject newPostObj = Instantiate(postPrefab, contentParent);
 
             // Find the controller script (TimelinePostInteraction.cs) instance on the new object
-            FeedPostInteraction interactionScript = newPostObj.GetComponent<FeedPostInteraction>();
+            TimelinePost interactionScript = newPostObj.GetComponent<TimelinePost>();
 
             // Inject the post data
             if (interactionScript != null)
             {
                 interactionScript.SetupPost(data, stage);
             }
+        }
+    }
+
+    /// <summary>
+    /// Removes a post's GameObject from the feed after it has been reported/analysed.
+    /// Called by stage managers after a submission is evaluated.
+    /// </summary>
+    public void RemovePost(TimelinePost post)
+    {
+        if (post != null && post.gameObject != null)
+        {
+            Destroy(post.gameObject);
         }
     }
 }

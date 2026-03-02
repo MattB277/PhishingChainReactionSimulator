@@ -6,7 +6,7 @@ using TMPro;
 
 public class AnalysisManager : MonoBehaviour
 {
-    public static AnalysisManager Instance;
+    public static AnalysisManager Instance { get; private set; }
 
     [Header("UI References")]
     public GameObject modalPanel;
@@ -17,7 +17,7 @@ public class AnalysisManager : MonoBehaviour
     public Toggle[] campaignToggles; // Indexes map to PhishCampaignType enum (skip None)
     public Toggle[] impactToggles;   // Indexes map to PhishImpactType enum (skip None)
 
-    private FeedPostInteraction currentTarget;
+    private TimelinePost currentTarget;
 
     void Awake()
     {
@@ -27,7 +27,7 @@ public class AnalysisManager : MonoBehaviour
         if (modalPanel != null) modalPanel.SetActive(false);
     }
 
-    public void OpenAnalysisModal(FeedPostInteraction post)
+    public void OpenAnalysisModal(TimelinePost post)
     {
         currentTarget = post;
 
@@ -56,10 +56,18 @@ public class AnalysisManager : MonoBehaviour
         bool campaignChosen = selectedCampaign != PhishCampaignType.None;
         bool impactChosen = selectedImpact != PhishImpactType.None;
 
+        Debug.Log($"User submitted analysis: Campaign={selectedCampaign}, Impact={selectedImpact}");
+        Debug.Log($"Post data: IsPhish={currentTarget.postData.isPhish}, CampaignType={currentTarget.postData.campaignType}, ImpactType={currentTarget.postData.impactType}");
+
         // Reject partial and empty submissions
         if (campaignChosen && impactChosen)
         {
             EvaluateDecision(selectedCampaign, selectedImpact);
+
+            // Remove the post from the feed
+            if (BlueTeamManager.Instance != null)
+                BlueTeamManager.Instance.timelineManager.RemovePost(currentTarget);
+
             if (modalPanel != null) modalPanel.SetActive(false);
         } else {
             LogFailure("Choose both a campaign context and an impact type before submitting.");
@@ -104,7 +112,7 @@ public class AnalysisManager : MonoBehaviour
 
     private void EvaluateDecision(PhishCampaignType userCampaign, PhishImpactType userImpact)
     {
-        TimelinePost post = currentTarget.postData;
+        TimelinePostData post = currentTarget.postData;
 
         if (!post.isPhish)
         {

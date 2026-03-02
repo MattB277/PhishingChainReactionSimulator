@@ -3,14 +3,14 @@ using UnityEngine.UI;
 
 public class ReportManager : MonoBehaviour
 {
-    public static ReportManager Instance;
+    public static ReportManager Instance { get; private set; }
 
     [Header("UI References")]
     public GameObject modalPanel;
     public Toggle[] reasonToggles;
     public Button submitButton; // Held inside the modal window
 
-    private FeedPostInteraction currentTarget; // Post which has been reported
+    private TimelinePost currentTarget; // Post which has been reported
 
     void Awake()
     {
@@ -20,7 +20,7 @@ public class ReportManager : MonoBehaviour
         modalPanel.SetActive(false);
     }
 
-    public void OpenReportModal(FeedPostInteraction post)
+    public void OpenReportModal(TimelinePost post)
     {
         currentTarget = post;
         modalPanel.SetActive(true);
@@ -55,6 +55,10 @@ public class ReportManager : MonoBehaviour
         // Check answer
         EvaluateDecision(selectedReason);
         
+        // Remove the post from the feed
+        if (BlueTeamManager.Instance != null)
+            BlueTeamManager.Instance.timelineManager.RemovePost(currentTarget);
+
         // Close modal panel
         modalPanel.SetActive(false);
 

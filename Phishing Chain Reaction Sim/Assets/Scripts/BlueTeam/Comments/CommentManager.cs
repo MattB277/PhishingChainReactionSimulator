@@ -4,7 +4,7 @@ using System;
 
 public class CommentManager : MonoBehaviour
 {
-    public static CommentManager Instance;
+    public static CommentManager Instance { get; private set; }
 
     [Header("UI References")]
     public GameObject modalPanel;
@@ -28,7 +28,7 @@ public class CommentManager : MonoBehaviour
     public void OpenCommentModal(TimelinePost post)
     {
         currentTarget = post;
-        targetPostText.text = post.postBody;
+        targetPostText.text = post.postData.postBody;
         modalPanel.SetActive(true);
         
         PopulatePalette();
@@ -54,21 +54,18 @@ public class CommentManager : MonoBehaviour
         if (catCard == null || reasonCard == null || adviceCard == null)
         {
             Debug.LogWarning("Please fill all three sections before posting.");
-            // Ideally: Flash the empty zones red or show a UI tooltip here
             return;
         }
 
         // 2. Evaluation Logic
         // We evaluate primarily based on the Reasoning matching the PhishReason.
-        bool isPhish = currentTarget.isPhish;
-        PhishReason correctReason = currentTarget.correctReason;
+        bool isPhish = currentTarget.postData.isPhish;
+        PhishReason correctReason = currentTarget.postData.correctReason;
 
         if (isPhish && reasonCard.Data.linkedReason == correctReason)
         {
             // SUCCESS
-            int victimsSaved = 25; // Placeholder for your herd immunity calculation
-            
-            // Assuming you have a FeedbackManager
+            int victimsSaved = 25; // Placeholder for herd immunity calculation
             FeedbackManager.Instance.ShowSuccess($"Excellent Comment! You accurately identified the {correctReason} tactic and saved {victimsSaved} users.");
         }
         else if (isPhish)
@@ -82,10 +79,14 @@ public class CommentManager : MonoBehaviour
              FeedbackManager.Instance.ShowFailure("False Alarm! This post is actually safe.");
         }
 
+        // Remove the post from the feed
+        if (BlueTeamManager.Instance != null)
+            BlueTeamManager.Instance.timelineManager.RemovePost(currentTarget);
+
         // Notify central manager that this post has been handled
         // TODO: Add completion condition (e.g. all phish posts commented on)
-        if (BlueTeamManager.Instance != null)
-            BlueTeamManager.Instance.NotifyStageComplete();
+        //if (BlueTeamManager.Instance != null)
+        //    BlueTeamManager.Instance.NotifyStageComplete();
 
         CloseModal();
     }
