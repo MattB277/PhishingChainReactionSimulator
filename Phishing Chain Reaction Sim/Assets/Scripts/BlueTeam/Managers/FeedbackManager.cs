@@ -9,7 +9,7 @@ public class FeedbackManager : MonoBehaviour
     /// This keeps the feedback logic separate and allows for easy updates to how feedback is presented
     /// without needing to change the core game logic.
     /// </summary>
-    public static FeedbackManager Instance { get; internal set; }
+    public static FeedbackManager Instance { get; private set; }
 
     public void ShowSuccess(string message)
     {

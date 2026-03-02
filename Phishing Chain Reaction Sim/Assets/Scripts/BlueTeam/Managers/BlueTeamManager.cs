@@ -7,7 +7,7 @@ using UnityEngine;
 /// </summary>
 public class BlueTeamManager : MonoBehaviour
 {
-    public static BlueTeamManager Instance;
+    public static BlueTeamManager Instance { get; private set; }
 
     [Header("References")]
     public TimelineManager timelineManager;
