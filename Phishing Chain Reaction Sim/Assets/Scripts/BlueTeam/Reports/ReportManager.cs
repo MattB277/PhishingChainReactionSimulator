@@ -63,10 +63,8 @@ public class ReportManager : MonoBehaviour
         modalPanel.SetActive(false);
 
         // Notify central manager that this post has been handled
-        // TODO: Add completion condition (e.g. all phish posts reported)
-        // For now, each submission counts as stage complete
-        //if (BlueTeamManager.Instance != null)
-        //    BlueTeamManager.Instance.NotifyStageComplete();
+        if (BlueTeamManager.Instance != null)
+            BlueTeamManager.Instance.NotifyPostHandled();
     }
 
     private void EvaluateDecision(PhishReason userReason)
@@ -74,19 +72,18 @@ public class ReportManager : MonoBehaviour
         bool isPhish = currentTarget.postData.isPhish;
         PhishReason correctReason = currentTarget.postData.correctReason;
 
-        // User correctly identified a phish and the correct reason?
+        // User correctly identified a phish and the correct reason
         if (isPhish && userReason == correctReason)
         {
-            Debug.Log("<color=green>SUCCESS: Phish caught correctly!</color>");
-            // TODO: Add score / show success popup
+            FeedbackManager.Instance.ShowSuccess($"Correct! You identified the {correctReason} tactic.");
         }
         else if (!isPhish)
         {
-            Debug.Log("<color=red>FAIL: You reported a safe post!</color>");
+            FeedbackManager.Instance.ShowFailure("False alarm! This post is actually safe, though it is good practice to be cautious.");
         }
         else
         {
-             Debug.Log($"<color=orange>CLOSE: It was a phish, but reason was wrong. (Expected: {correctReason})</color>");
+            FeedbackManager.Instance.ShowFailure($"It was a phish, but the tactic used was {correctReason}, not {userReason}.");
         }
     }
     

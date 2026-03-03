@@ -11489,7 +11489,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: PhishingSimulator::BlueTeamManager
   timelineManager: {fileID: 854151641}
-  startingStage: 1
+  startingStage: 3
   totalStages: 3
   requiredPostsPerStage: 010000000100000001000000
   nextSceneName: RedTeam
