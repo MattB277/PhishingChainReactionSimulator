@@ -11,8 +11,12 @@ public enum CardCategory
 public class CommentCardData
 {
     public string id;
-    public string cardText; // text shown to user on the card
-    public CardCategory category; // Categorisation, Reasoning, Advice
-    public PhishReason linkedReason; // Only for Reasoning Cards, link to specific phish reason for answer checking
+    public string cardText;
+    public CardCategory category;
+
+    [Header("Link one field per category")]
+    public PhishImpactType linkedImpact;  // Categorisation cards: what type of phish
+    public PhishReason    linkedReason;   // Reasoning cards:      the giveaway
+    public PhishAdvice    linkedAdvice;   // Advice cards:          defence tip (must match the giveaway)
 }
 

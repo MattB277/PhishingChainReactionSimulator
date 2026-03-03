@@ -284,6 +284,8 @@ GameObject:
   - component: {fileID: 672795447296721240}
   - component: {fileID: 7306100525999588696}
   - component: {fileID: 2995379299797104689}
+  - component: {fileID: -336464724746977710}
+  - component: {fileID: -4632750736587274573}
   m_Layer: 5
   m_Name: CommentCard
   m_TagString: Untagged
@@ -376,3 +378,29 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!225 &-336464724746977710
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8521088529909015906}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &-4632750736587274573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8521088529909015906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0576f756a0c87e34b84c8a855e65fa57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: PhishingSimulator::CommentCard
+  bodyText: {fileID: 8934786392693662674}
+  TypeText: {fileID: 7763559297546515908}

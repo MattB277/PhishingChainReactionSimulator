@@ -9,6 +9,8 @@ public class CommentCardPalette : BasePalette
     
     public override void PopulatePallete(int stage = 0)
     {
+        Debug.Log($"[CommentCardPalette] PopulatePallete called. Database: {database}, Prefab: {commentCardPrefab}, ContentParent: {contentParent}");
+
         // clear existing cards
         foreach (Transform child in contentParent)
         {
@@ -24,6 +26,10 @@ public class CommentCardPalette : BasePalette
             {
                 cardComponent.Initialize(data);
                 cardComponent.HomePalette = contentParent; // pass palette along to card
+            }
+            else
+            {
+                Debug.LogError($"[CommentCardPalette] Prefab '{commentCardPrefab.name}' is missing a CommentCard component!", newCard);
             }
         }
     }

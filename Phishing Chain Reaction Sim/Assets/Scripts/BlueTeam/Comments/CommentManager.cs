@@ -1,6 +1,5 @@
 using UnityEngine;
 using TMPro;
-using System;
 
 public class CommentManager : MonoBehaviour
 {
@@ -58,35 +57,15 @@ public class CommentManager : MonoBehaviour
         }
 
         // 2. Evaluation Logic
-        // We evaluate primarily based on the Reasoning matching the PhishReason.
-        bool isPhish = currentTarget.postData.isPhish;
-        PhishReason correctReason = currentTarget.postData.correctReason;
-
-        if (isPhish && reasonCard.Data.linkedReason == correctReason)
-        {
-            // SUCCESS
-            int victimsSaved = 25; // Placeholder for herd immunity calculation
-            FeedbackManager.Instance.ShowSuccess($"Excellent Comment! You accurately identified the {correctReason} tactic and saved {victimsSaved} users.");
-        }
-        else if (isPhish)
-        {
-            // PARTIAL FAIL (Right intent, wrong reason)
-            FeedbackManager.Instance.ShowFailure($"You missed the mark. This is a scam using {correctReason}, not {reasonCard.Data.linkedReason}.");
-        }
-        else
-        {
-             // FAIL (Safe post)
-             FeedbackManager.Instance.ShowFailure("False Alarm! This post is actually safe.");
-        }
+        EvaluateComment(catCard, reasonCard, adviceCard);
 
         // Remove the post from the feed
         if (BlueTeamManager.Instance != null)
             BlueTeamManager.Instance.timelineManager.RemovePost(currentTarget);
 
         // Notify central manager that this post has been handled
-        // TODO: Add completion condition (e.g. all phish posts commented on)
-        //if (BlueTeamManager.Instance != null)
-        //    BlueTeamManager.Instance.NotifyStageComplete();
+        if (BlueTeamManager.Instance != null)
+            BlueTeamManager.Instance.NotifyPostHandled();
 
         CloseModal();
     }
@@ -103,5 +82,44 @@ public class CommentManager : MonoBehaviour
     {
         ClearCards();
         modalPanel.SetActive(false);
+    }
+
+    private void EvaluateComment(CommentCard catCard, CommentCard reasonCard, CommentCard adviceCard)
+    {
+        TimelinePostData post = currentTarget.postData;
+
+        // --- Safe post reported as phish ---
+        if (!post.isPhish)
+        {
+            FeedbackManager.Instance.ShowFailure("False alarm! This post is actually safe.");
+            return;
+        }
+
+        // --- Check each dimension ---
+        bool categoryCorrect = catCard.Data.linkedImpact   == post.impactType;
+        bool reasonCorrect   = reasonCard.Data.linkedReason == post.correctReason;
+        bool adviceCorrect   = adviceCard.Data.linkedAdvice == PhishAdviceMapping.FromReason(post.correctReason);
+
+        // --- Feedback ---
+        if (reasonCorrect && categoryCorrect && adviceCorrect)
+        {
+            FeedbackManager.Instance.ShowSuccess(
+                $"Excellent comment! You correctly categorised a {post.impactType} phish, spotted the {post.correctReason} giveaway, and gave the right advice.");
+        }
+        else if (reasonCorrect && adviceCorrect)
+        {
+            FeedbackManager.Instance.ShowSuccess(
+                $"Good eye! You spotted {post.correctReason} and gave solid advice, but the phish category is {post.impactType}.");
+        }
+        else if (reasonCorrect)
+        {
+            FeedbackManager.Instance.ShowSuccess(
+                $"You identified the {post.correctReason} giveaway, but your category or advice needs work.");
+        }
+        else
+        {
+            FeedbackManager.Instance.ShowFailure(
+                $"Not quite. The giveaway here is {post.correctReason}, not {reasonCard.Data.linkedReason}.");
+        }
     }
 }
