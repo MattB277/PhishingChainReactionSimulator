@@ -1,5 +1,3 @@
-// REQUIRES LOOK OVER
-
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -69,14 +67,14 @@ public class AnalysisManager : MonoBehaviour
                 BlueTeamManager.Instance.timelineManager.RemovePost(currentTarget);
 
             if (modalPanel != null) modalPanel.SetActive(false);
+
+            // Notify central manager that this post has been handled
+            if (BlueTeamManager.Instance != null)
+                BlueTeamManager.Instance.NotifyPostHandled();
         } else {
             LogFailure("Choose both a campaign context and an impact type before submitting.");
             return;
         }
-
-        // TODO: Add completion condition (e.g. all phish posts analysed)
-        //if (BlueTeamManager.Instance != null)
-        //    BlueTeamManager.Instance.NotifyStageComplete();
     }
 
     public void CancelAnalysis()

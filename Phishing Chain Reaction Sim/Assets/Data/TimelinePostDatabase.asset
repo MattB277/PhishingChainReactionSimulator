@@ -21,10 +21,10 @@ MonoBehaviour:
     timestamp: 3m
     isPhish: 1
     correctReason: 1
+    impactType: 0
     stage: 1
     severity: 0
     campaignType: 0
-    impactType: 0
     eventTag: 
     analysisDifficulty: 0
   - id: 1
@@ -36,10 +36,10 @@ MonoBehaviour:
     timestamp: 3h
     isPhish: 0
     correctReason: 0
+    impactType: 0
     stage: 1
     severity: 0
     campaignType: 0
-    impactType: 0
     eventTag: 
     analysisDifficulty: 0
   - id: 2
@@ -50,10 +50,10 @@ MonoBehaviour:
     timestamp: 6h
     isPhish: 0
     correctReason: 0
+    impactType: 0
     stage: 1
     severity: 0
     campaignType: 0
-    impactType: 0
     eventTag: 
     analysisDifficulty: 0
   - id: 3
@@ -65,10 +65,10 @@ MonoBehaviour:
     timestamp: 4h
     isPhish: 0
     correctReason: 0
+    impactType: 0
     stage: 1
     severity: 0
     campaignType: 0
-    impactType: 0
     eventTag: 
     analysisDifficulty: 0
   - id: 4
@@ -79,10 +79,10 @@ MonoBehaviour:
     timestamp: 3h
     isPhish: 0
     correctReason: 0
+    impactType: 0
     stage: 1
     severity: 0
     campaignType: 0
-    impactType: 0
     eventTag: 
     analysisDifficulty: 0
   - id: 5
@@ -93,10 +93,10 @@ MonoBehaviour:
     timestamp: 3h
     isPhish: 0
     correctReason: 0
+    impactType: 0
     stage: 1
     severity: 0
     campaignType: 0
-    impactType: 0
     eventTag: 
     analysisDifficulty: 0
   - id: 6
@@ -108,10 +108,10 @@ MonoBehaviour:
     timestamp: 3h
     isPhish: 0
     correctReason: 0
+    impactType: 0
     stage: 1
     severity: 0
     campaignType: 0
-    impactType: 0
     eventTag: 
     analysisDifficulty: 0
   - id: 7
@@ -129,10 +129,10 @@ MonoBehaviour:
     timestamp: 3h
     isPhish: 0
     correctReason: 0
+    impactType: 0
     stage: 1
     severity: 0
     campaignType: 0
-    impactType: 0
     eventTag: 
     analysisDifficulty: 0
   - id: 8
@@ -144,10 +144,10 @@ MonoBehaviour:
     timestamp: 5h
     isPhish: 0
     correctReason: 0
+    impactType: 0
     stage: 1
     severity: 0
     campaignType: 0
-    impactType: 0
     eventTag: 
     analysisDifficulty: 0
   - id: 9
@@ -159,9 +159,24 @@ MonoBehaviour:
     timestamp: 5h
     isPhish: 1
     correctReason: 1
+    impactType: 0
     stage: 2
     severity: 2
     campaignType: 0
-    impactType: 0
     eventTag: 
     analysisDifficulty: 0
+  - id: 10
+    displayName: CS Dev
+    handle: DevStories
+    avatar: {fileID: 21300000, guid: da795aad96e614a49abab4caa257a5f4, type: 3}
+    postBody: I spent the past few days debugging and cleaning up code from 6 months
+      ago, past me was not smart...
+    timestamp: 5h
+    isPhish: 1
+    correctReason: 5
+    impactType: 2
+    stage: 3
+    severity: 2
+    campaignType: 2
+    eventTag: election
+    analysisDifficulty: 2
