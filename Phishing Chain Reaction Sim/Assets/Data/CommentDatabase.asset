@@ -1,0 +1,99 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d0eab2043e30534e90854777f24d96e, type: 3}
+  m_Name: CommentDatabase
+  m_EditorClassIdentifier: PhishingSimulator::CommentDatabase
+  allCards:
+  - id: 0
+    cardText: This post is trying to steal your login credentials
+    category: 0
+    linkedImpact: 1
+    linkedReason: 0
+    linkedAdvice: 0
+  - id: 1
+    cardText: This post is fraud!
+    category: 0
+    linkedImpact: 2
+    linkedReason: 0
+    linkedAdvice: 0
+  - id: 2
+    cardText: This post will give you a virus!
+    category: 0
+    linkedImpact: 3
+    linkedReason: 0
+    linkedAdvice: 0
+  - id: 3
+    cardText: This post is trying to steal your personal data!
+    category: 0
+    linkedImpact: 4
+    linkedReason: 0
+    linkedAdvice: 0
+  - id: 4
+    cardText: The user is trying to pressure you into something.
+    category: 1
+    linkedImpact: 0
+    linkedReason: 1
+    linkedAdvice: 0
+  - id: 5
+    cardText: The link is not safe!
+    category: 1
+    linkedImpact: 0
+    linkedReason: 2
+    linkedAdvice: 0
+  - id: 6
+    cardText: This is not the real account of this brand.
+    category: 1
+    linkedImpact: 0
+    linkedReason: 3
+    linkedAdvice: 0
+  - id: 7
+    cardText: The user is trying to capitalise on your greed
+    category: 1
+    linkedImpact: 0
+    linkedReason: 4
+    linkedAdvice: 0
+  - id: 8
+    cardText: They are trying to emotionally manipulate you.
+    category: 1
+    linkedImpact: 0
+    linkedReason: 5
+    linkedAdvice: 0
+  - id: 9
+    cardText: Always double check the links on posts.
+    category: 2
+    linkedImpact: 0
+    linkedReason: 0
+    linkedAdvice: 1
+  - id: 10
+    cardText: Take time to think before reacting to posts.
+    category: 2
+    linkedImpact: 0
+    linkedReason: 0
+    linkedAdvice: 2
+  - id: 11
+    cardText: Double check the account is real if you're unsure
+    category: 2
+    linkedImpact: 0
+    linkedReason: 0
+    linkedAdvice: 3
+  - id: 12
+    cardText: Think to yourself if a deal is too good to be true.
+    category: 2
+    linkedImpact: 0
+    linkedReason: 0
+    linkedAdvice: 4
+  - id: 13
+    cardText: Stay level headed when emotions are high.
+    category: 2
+    linkedImpact: 0
+    linkedReason: 0
+    linkedAdvice: 5
