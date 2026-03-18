@@ -27,9 +27,14 @@ public class FeedbackManager : MonoBehaviour
 
     [Header("Timing")]
     [Tooltip("Seconds before the panel auto-hides. Set to 0 to require manual close.")]
-    public float displayDuration = 3f;
+    public float displayDuration = 7f;
 
     private Coroutine hideRoutine;
+
+    public bool IsPanelVisible()
+    {
+        return feedbackPanel != null && feedbackPanel.activeInHierarchy;
+    }
 
     void Awake()
     {

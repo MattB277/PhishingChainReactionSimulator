@@ -13,20 +13,6 @@ MonoBehaviour:
   m_Name: TimelinePostDatabase
   m_EditorClassIdentifier: PhishingSimulator::FeedPostDatabase
   allPosts:
-  - id: 0
-    displayName: TestDisplay
-    handle: User1
-    avatar: {fileID: 21300000, guid: da795aad96e614a49abab4caa257a5f4, type: 3}
-    postBody: This is a test post made in the DB
-    timestamp: 3m
-    isPhish: 1
-    correctReason: 1
-    impactType: 0
-    stage: 1
-    severity: 0
-    campaignType: 0
-    eventTag: 
-    analysisDifficulty: 0
   - id: 1
     displayName: Tech Daily
     handle: TechDaily
@@ -37,7 +23,7 @@ MonoBehaviour:
     isPhish: 0
     correctReason: 0
     impactType: 0
-    stage: 1
+    stage: 2
     severity: 0
     campaignType: 0
     eventTag: 
@@ -57,6 +43,146 @@ MonoBehaviour:
     eventTag: 
     analysisDifficulty: 0
   - id: 3
+    displayName: Remote Hiring Desk
+    handle: "@RemoteHiringDesk"
+    avatar: {fileID: 21300000, guid: da795aad96e614a49abab4caa257a5f4, type: 3}
+    postBody: "HIRING NOW: Remote assistant roles ($75/hr). Apply in 2 minutes: hxxp://remote-jobs-verify[dot]info/app"
+    timestamp: 8m
+    isPhish: 1
+    correctReason: 4
+    impactType: 4
+    stage: 1
+    severity: 2
+    campaignType: 0
+    eventTag: 
+    analysisDifficulty: 0
+  - id: 4
+    displayName: City Rewards
+    handle: "@CityRewards"
+    avatar: {fileID: 21300000, guid: da795aad96e614a49abab4caa257a5f4, type: 3}
+    postBody: "We're giving away been 10 £250 gift cards! Claim yours before it expires! bit.ly/claim-reward-now"
+    timestamp: 21m
+    isPhish: 1
+    correctReason: 2
+    impactType: 2
+    stage: 1
+    severity: 2
+    campaignType: 0
+    eventTag: 
+    analysisDifficulty: 0
+  - id: 5
+    displayName: Account Safety Team
+    handle: "@Safety_Check"
+    avatar: {fileID: 21300000, guid: da795aad96e614a49abab4caa257a5f4, type: 3}
+    postBody: "Protect your account against hackers! Secure your account immediately at: secure-login-check[dot]net"
+    timestamp: 3m
+    isPhish: 1
+    correctReason: 3
+    impactType: 1
+    stage: 1
+    severity: 3
+    campaignType: 0
+    eventTag: 
+    analysisDifficulty: 0
+  - id: 6
+    displayName: Flash Tickets
+    handle: "@FlashTicketsToday"
+    avatar: {fileID: 21300000, guid: da795aad96e614a49abab4caa257a5f4, type: 3}
+    postBody: "LAST 10 MINUTES: OVO Hydro summer concerts resale tickets just dropped. Don’t miss out - link in post: tix-now[dot]live"
+    timestamp: 1h
+    isPhish: 1
+    correctReason: 1
+    impactType: 2
+    stage: 1
+    severity: 2
+    campaignType: 0
+    eventTag: 
+    analysisDifficulty: 0
+  - id: 7
+    displayName: Free Tool Drop
+    handle: "@ToolDropDaily"
+    avatar: {fileID: 21300000, guid: da795aad96e614a49abab4caa257a5f4, type: 3}
+    postBody: "New ‘performance booster’ download is live. Install to speed up your PC: download-now[dot]zip"
+    timestamp: 46m
+    isPhish: 1
+    correctReason: 2
+    impactType: 3
+    stage: 1
+    severity: 3
+    campaignType: 0
+    eventTag: 
+    analysisDifficulty: 0
+  - id: 8
+    displayName: Support Help (Unofficial)
+    handle: "@helpdesk_support1"
+    avatar: {fileID: 21300000, guid: da795aad96e614a49abab4caa257a5f4, type: 3}
+    postBody: "If your account is locked, verify ownership here to restore access: account-restore-center[dot]com"
+    timestamp: 12m
+    isPhish: 1
+    correctReason: 3
+    impactType: 1
+    stage: 2
+    severity: 4
+    campaignType: 0
+    eventTag: 
+    analysisDifficulty: 0
+  - id: 9
+    displayName: Crypto Relief Now
+    handle: "@ReliefNowGlobal"
+    avatar: {fileID: 21300000, guid: da795aad96e614a49abab4caa257a5f4, type: 3}
+    postBody: "Families need urgent help. Donations accepted in ETH only — send to: 0x9f… (address in full post)"
+    timestamp: 5m
+    isPhish: 1
+    correctReason: 5
+    impactType: 2
+    stage: 2
+    severity: 3
+    campaignType: 0
+    eventTag: 
+    analysisDifficulty: 0
+  - id: 10
+    displayName: Giveaway Partner
+    handle: "@GiveawayPartner"
+    avatar: {fileID: 21300000, guid: da795aad96e614a49abab4caa257a5f4, type: 3}
+    postBody: "WINNER ANNOUNCEMENT: claim your new phone today. Confirm delivery details: short.link/confirm-ship"
+    timestamp: 2h
+    isPhish: 1
+    correctReason: 2
+    impactType: 4
+    stage: 2
+    severity: 3
+    campaignType: 0
+    eventTag: 
+    analysisDifficulty: 0
+  - id: 11
+    displayName: Deal Radar
+    handle: "@dealradar_daily"
+    avatar: {fileID: 21300000, guid: da795aad96e614a49abab4caa257a5f4, type: 3}
+    postBody: "90% off EVERYTHING at ‘Designer Warehouse’ for the next 30 minutes only! Checkout here: mega-deals-clearance[dot]shop"
+    timestamp: 9m
+    isPhish: 1
+    correctReason: 4
+    impactType: 2
+    stage: 2
+    severity: 3
+    campaignType: 0
+    eventTag: 
+    analysisDifficulty: 0
+  - id: 12
+    displayName: Urgent HR Update
+    handle: "@HR_NoticeBoard"
+    avatar: {fileID: 21300000, guid: da795aad96e614a49abab4caa257a5f4, type: 3}
+    postBody: "PAYROLL issue affecting many staff. Check to see if your effected and fix it before 5PM! payroll-fix.online"
+    timestamp: 17m
+    isPhish: 1
+    correctReason: 1
+    impactType: 1
+    stage: 2
+    severity: 4
+    campaignType: 0
+    eventTag: 
+    analysisDifficulty: 0
+  - id: 18
     displayName: Urban Outfitters
     handle: UrbanOutfitters
     avatar: {fileID: 21300000, guid: da795aad96e614a49abab4caa257a5f4, type: 3}
@@ -71,7 +197,7 @@ MonoBehaviour:
     campaignType: 0
     eventTag: 
     analysisDifficulty: 0
-  - id: 4
+  - id: 19
     displayName: Gamerman
     handle: SoRetro
     avatar: {fileID: 21300000, guid: da795aad96e614a49abab4caa257a5f4, type: 3}
@@ -80,26 +206,12 @@ MonoBehaviour:
     isPhish: 0
     correctReason: 0
     impactType: 0
-    stage: 1
+    stage: 3
     severity: 0
     campaignType: 0
     eventTag: 
     analysisDifficulty: 0
-  - id: 5
-    displayName: Gamerman
-    handle: SoRetro
-    avatar: {fileID: 21300000, guid: da795aad96e614a49abab4caa257a5f4, type: 3}
-    postBody: 'Hot take: The Amazing Spiderman 2 on Xbox 360 cannot be beat'
-    timestamp: 3h
-    isPhish: 0
-    correctReason: 0
-    impactType: 0
-    stage: 1
-    severity: 0
-    campaignType: 0
-    eventTag: 
-    analysisDifficulty: 0
-  - id: 6
+  - id: 21
     displayName: John Smith
     handle: CS_John
     avatar: {fileID: 21300000, guid: da795aad96e614a49abab4caa257a5f4, type: 3}
@@ -114,7 +226,7 @@ MonoBehaviour:
     campaignType: 0
     eventTag: 
     analysisDifficulty: 0
-  - id: 7
+  - id: 22
     displayName: Cyber Weekly
     handle: CyberWeekly
     avatar: {fileID: 21300000, guid: da795aad96e614a49abab4caa257a5f4, type: 3}
@@ -130,27 +242,12 @@ MonoBehaviour:
     isPhish: 0
     correctReason: 0
     impactType: 0
-    stage: 1
+    stage: 2
     severity: 0
     campaignType: 0
     eventTag: 
     analysisDifficulty: 0
-  - id: 8
-    displayName: CS Dev
-    handle: DevStories
-    avatar: {fileID: 21300000, guid: da795aad96e614a49abab4caa257a5f4, type: 3}
-    postBody: I spent the past few days debugging and cleaning up code from 6 months
-      ago, past me was not smart...
-    timestamp: 5h
-    isPhish: 0
-    correctReason: 0
-    impactType: 0
-    stage: 1
-    severity: 0
-    campaignType: 0
-    eventTag: 
-    analysisDifficulty: 0
-  - id: 9
+  - id: 23
     displayName: CS Dev
     handle: DevStories
     avatar: {fileID: 21300000, guid: da795aad96e614a49abab4caa257a5f4, type: 3}
@@ -165,50 +262,719 @@ MonoBehaviour:
     campaignType: 0
     eventTag: 
     analysisDifficulty: 0
-  - id: 10
-    displayName: CS Dev
-    handle: DevStories
+  - id: 24
+    displayName: McQueen
+    handle: McQueen95
     avatar: {fileID: 21300000, guid: da795aad96e614a49abab4caa257a5f4, type: 3}
-    postBody: I spent the past few days debugging and cleaning up code from 6 months
-      ago, past me was not smart...
-    timestamp: 5h
+    postBody: 'Can''t believe I placed first in my debut tournament!
+
+      #GoLightning'
+    timestamp: 1h
+    isPhish: 0
+    correctReason: 0
+    impactType: 0
+    stage: 3
+    severity: 0
+    campaignType: 0
+    eventTag: 
+    analysisDifficulty: 0
+  - id: 25
+    displayName: Cafe Voltaire
+    handle: cafevoltaire_
+    avatar: {fileID: 21300000, guid: da795aad96e614a49abab4caa257a5f4, type: 3}
+    postBody: "Our new seasonal menu launches Monday. Butternut squash soup is back!"
+    timestamp: 1h ago
+    isPhish: 0
+    correctReason: 0
+    impactType: 0
+    stage: 2
+    severity: 0
+    campaignType: 0
+    eventTag: 
+    analysisDifficulty: 0
+  - id: 26
+    displayName: Jordan Williams
+    handle: jordanw_writes
+    avatar: {fileID: 21300000, guid: da795aad96e614a49abab4caa257a5f4, type: 3}
+    postBody: "Hot take: tabs are better than spaces and I will die on this hill."
+    timestamp: 3h ago
+    isPhish: 0
+    correctReason: 0
+    impactType: 0
+    stage: 2
+    severity: 0
+    campaignType: 0
+    eventTag: 
+    analysisDifficulty: 0
+  - id: 27
+    displayName: Glasgow Uni SRC
+    handle: glasgowsrc
+    avatar: {fileID: 21300000, guid: da795aad96e614a49abab4caa257a5f4, type: 3}
+    postBody: "Reminder: student council elections open next week. Register to vote on our website."
+    timestamp: 2h ago
+    isPhish: 0
+    correctReason: 0
+    impactType: 0
+    stage: 2
+    severity: 0
+    campaignType: 0
+    eventTag: 
+    analysisDifficulty: 0
+  - id: 28
+    displayName: Hannah Taylor
+    handle: hannah_tay_
+    avatar: {fileID: 21300000, guid: da795aad96e614a49abab4caa257a5f4, type: 3}
+    postBody: "My dissertation proposal just got approved! Six months of stress for one email."
+    timestamp: 4h ago
+    isPhish: 0
+    correctReason: 0
+    impactType: 0
+    stage: 2
+    severity: 0
+    campaignType: 0
+    eventTag: 
+    analysisDifficulty: 0
+  - id: 29
+    displayName: ScotRail
+    handle: scotrail_updates
+    avatar: {fileID: 21300000, guid: da795aad96e614a49abab4caa257a5f4, type: 3}
+    postBody: Engineering works between Glasgow Central and Paisley this weekend. Replacement buses running.
+    timestamp: 5h ago
+    isPhish: 0
+    correctReason: 0
+    impactType: 0
+    stage: 2
+    severity: 0
+    campaignType: 0
+    eventTag: 
+    analysisDifficulty: 0
+  - id: 30
+    displayName: Dev Patel
+    handle: devpatel_tech
+    avatar: {fileID: 21300000, guid: da795aad96e614a49abab4caa257a5f4, type: 3}
+    postBody: Quick thread on how I set up CI/CD for my final year project using GitHub Actions.
+    timestamp: 2h ago
+    isPhish: 0
+    correctReason: 0
+    impactType: 0
+    stage: 2
+    severity: 0
+    campaignType: 0
+    eventTag: 
+    analysisDifficulty: 0
+  - id: 31
+    displayName: The Hunterian
+    handle: thehunterian
+    avatar: {fileID: 21300000, guid: da795aad96e614a49abab4caa257a5f4, type: 3}
+    postBody: Free entry this Saturday for our new exhibition on Roman Scotland. All welcome.
+    timestamp: 6h ago
+    isPhish: 0
+    correctReason: 0
+    impactType: 0
+    stage: 2
+    severity: 0
+    campaignType: 0
+    eventTag: 
+    analysisDifficulty: 0
+  - id: 32
+    displayName: Kirsty Macleod
+    handle: kirsty_mac_art
+    avatar: {fileID: 21300000, guid: da795aad96e614a49abab4caa257a5f4, type: 3}
+    postBody: Spent the whole day glazing ceramics. Kiln goes on tomorrow.
+    timestamp: 3h ago
+    isPhish: 0
+    correctReason: 0
+    impactType: 0
+    stage: 2
+    severity: 0
+    campaignType: 0
+    eventTag: 
+    analysisDifficulty: 0
+  - id: 33
+    displayName: GU Climbing Club
+    handle: guclimbing
+    avatar: {fileID: 21300000, guid: da795aad96e614a49abab4caa257a5f4, type: 3}
+    postBody: "Indoor session at TCA this Thursday 7pm. Beginners welcome, £5 entry."
+    timestamp: 4h ago
+    isPhish: 0
+    correctReason: 0
+    impactType: 0
+    stage: 2
+    severity: 0
+    campaignType: 0
+    eventTag: 
+    analysisDifficulty: 0
+  - id: 34
+    displayName: Sam Carter
+    handle: samcarter_photo
+    avatar: {fileID: 21300000, guid: da795aad96e614a49abab4caa257a5f4, type: 3}
+    postBody: Took the drone out over Glencoe this morning. Absolutely unreal visibility.
+    timestamp: 7h ago
+    isPhish: 0
+    correctReason: 0
+    impactType: 0
+    stage: 2
+    severity: 0
+    campaignType: 0
+    eventTag: 
+    analysisDifficulty: 0
+  - id: 35
+    displayName: NHS Scotland
+    handle: nhsscot_info
+    avatar: {fileID: 21300000, guid: da795aad96e614a49abab4caa257a5f4, type: 3}
+    postBody: Flu jab appointments still available. Book through your GP or local pharmacy.
+    timestamp: 1h ago
+    isPhish: 0
+    correctReason: 0
+    impactType: 0
+    stage: 2
+    severity: 0
+    campaignType: 0
+    eventTag: 
+    analysisDifficulty: 0
+  - id: 36
+    displayName: Megan Ross
+    handle: meg_ross_97
+    avatar: {fileID: 21300000, guid: da795aad96e614a49abab4caa257a5f4, type: 3}
+    postBody: Finally got around to watching Severance season 2. No spoilers but WOW.
+    timestamp: 5h ago
+    isPhish: 0
+    correctReason: 0
+    impactType: 0
+    stage: 2
+    severity: 0
+    campaignType: 0
+    eventTag: 
+    analysisDifficulty: 0
+  - id: 37
+    displayName: The Stand Comedy
+    handle: thestandglasgow
+    avatar: {fileID: 21300000, guid: da795aad96e614a49abab4caa257a5f4, type: 3}
+    postBody: "Edinburgh preview shows all this week - £5 a ticket. Lineup on our site."
+    timestamp: 3h ago
+    isPhish: 0
+    correctReason: 0
+    impactType: 0
+    stage: 2
+    severity: 0
+    campaignType: 0
+    eventTag: 
+    analysisDifficulty: 0
+  - id: 38
+    displayName: Ali Hassan
+    handle: ali_h_code
+    avatar: {fileID: 21300000, guid: da795aad96e614a49abab4caa257a5f4, type: 3}
+    postBody: "Wrote a Python script to automate my flat's heating schedule. Flatmates think I'm insane."
+    timestamp: 6h ago
+    isPhish: 0
+    correctReason: 0
+    impactType: 0
+    stage: 2
+    severity: 0
+    campaignType: 0
+    eventTag: 
+    analysisDifficulty: 0
+  - id: 39
+    displayName: UoG Library
+    handle: uoflibrary
+    avatar: {fileID: 21300000, guid: da795aad96e614a49abab4caa257a5f4, type: 3}
+    postBody: "Extended opening hours during exam period: 8am–midnight, Monday to Saturday."
+    timestamp: 2h ago
+    isPhish: 0
+    correctReason: 0
+    impactType: 0
+    stage: 2
+    severity: 0
+    campaignType: 0
+    eventTag: 
+    analysisDifficulty: 0
+  - id: 40
+    displayName: Emma Clarke
+    handle: emmaclarke92
+    avatar: {fileID: 21300000, guid: da795aad96e614a49abab4caa257a5f4, type: 3}
+    postBody: "Just finished my morning run - new PB of 24 minutes for 5k!"
+    timestamp: 2h ago
+    isPhish: 0
+    correctReason: 0
+    impactType: 0
+    stage: 1
+    severity: 0
+    campaignType: 0
+    eventTag: 
+    analysisDifficulty: 0
+  - id: 41
+    displayName: TechBytes
+    handle: techbytes_uk
+    avatar: {fileID: 21300000, guid: da795aad96e614a49abab4caa257a5f4, type: 3}
+    postBody: The new M4 MacBook Pro benchmarks are insane. Full review on our site.
+    timestamp: 3h ago
+    isPhish: 0
+    correctReason: 0
+    impactType: 0
+    stage: 1
+    severity: 0
+    campaignType: 0
+    eventTag: 
+    analysisDifficulty: 0
+  - id: 42
+    displayName: Jamie Nguyen
+    handle: jamien_dev
+    avatar: {fileID: 21300000, guid: da795aad96e614a49abab4caa257a5f4, type: 3}
+    postBody: "Anyone else struggling with Unity's new input system? The docs are rough."
+    timestamp: 4h ago
+    isPhish: 0
+    correctReason: 0
+    impactType: 0
+    stage: 1
+    severity: 0
+    campaignType: 0
+    eventTag: 
+    analysisDifficulty: 0
+  - id: 43
+    displayName: Sophie Turner
+    handle: soph_t_photos
+    avatar: {fileID: 21300000, guid: da795aad96e614a49abab4caa257a5f4, type: 3}
+    postBody: Golden hour at Loch Lomond today was unreal.
+    timestamp: 5h ago
+    isPhish: 0
+    correctReason: 0
+    impactType: 0
+    stage: 1
+    severity: 0
+    campaignType: 0
+    eventTag: 
+    analysisDifficulty: 0
+  - id: 44
+    displayName: Campus Coffee
+    handle: campuscoffee
+    avatar: {fileID: 21300000, guid: da795aad96e614a49abab4caa257a5f4, type: 3}
+    postBody: Flat whites half price all week for students - just show your student ID!
+    timestamp: 1h ago
+    isPhish: 0
+    correctReason: 0
+    impactType: 0
+    stage: 1
+    severity: 0
+    campaignType: 0
+    eventTag: 
+    analysisDifficulty: 0
+  - id: 45
+    displayName: Dr Rachel Kim
+    handle: drrachelkim
+    avatar: {fileID: 21300000, guid: da795aad96e614a49abab4caa257a5f4, type: 3}
+    postBody: New paper published on misinformation spread in closed social groups. Link in bio.
+    timestamp: 6h ago
+    isPhish: 0
+    correctReason: 0
+    impactType: 0
+    stage: 1
+    severity: 0
+    campaignType: 0
+    eventTag: 
+    analysisDifficulty: 0
+  - id: 46
+    displayName: Mark Patterson
+    handle: markp_1998
+    avatar: {fileID: 21300000, guid: da795aad96e614a49abab4caa257a5f4, type: 3}
+    postBody: Can't believe the football was cancelled again. Third week in a row.
+    timestamp: 3h ago
+    isPhish: 0
+    correctReason: 0
+    impactType: 0
+    stage: 1
+    severity: 0
+    campaignType: 0
+    eventTag: 
+    analysisDifficulty: 0
+  - id: 47
+    displayName: GlasgowFoodFix
+    handle: glasgowfoodfix
+    avatar: {fileID: 21300000, guid: da795aad96e614a49abab4caa257a5f4, type: 3}
+    postBody: Reviewed that new ramen place on Byres Road - absolutely outstanding.
+    timestamp: 7h ago
+    isPhish: 0
+    correctReason: 0
+    impactType: 0
+    stage: 1
+    severity: 0
+    campaignType: 0
+    eventTag: 
+    analysisDifficulty: 0
+  - id: 48
+    displayName: Priya Sharma
+    handle: priya_codes
+    avatar: {fileID: 21300000, guid: da795aad96e614a49abab4caa257a5f4, type: 3}
+    postBody: Just passed my AWS Cloud Practitioner exam! Study tips thread below.
+    timestamp: 2h ago
+    isPhish: 0
+    correctReason: 0
+    impactType: 0
+    stage: 1
+    severity: 0
+    campaignType: 0
+    eventTag: 
+    analysisDifficulty: 0
+  - id: 49
+    displayName: National Library
+    handle: natlib_official
+    avatar: {fileID: 21300000, guid: da795aad96e614a49abab4caa257a5f4, type: 3}
+    postBody: Free digital archive access for all UK residents - no sign-up needed.
+    timestamp: 8h ago
+    isPhish: 0
+    correctReason: 0
+    impactType: 0
+    stage: 1
+    severity: 0
+    campaignType: 0
+    eventTag: 
+    analysisDifficulty: 0
+  - id: 50
+    displayName: Aiden Brooks
+    handle: aiden_b_music
+    avatar: {fileID: 21300000, guid: da795aad96e614a49abab4caa257a5f4, type: 3}
+    postBody: New EP dropping Friday. Produced the whole thing in my bedroom, honestly proud of this one.
+    timestamp: 4h ago
+    isPhish: 0
+    correctReason: 0
+    impactType: 0
+    stage: 1
+    severity: 0
+    campaignType: 0
+    eventTag: 
+    analysisDifficulty: 0
+  - id: 51
+    displayName: UoG Esports
+    handle: uog_esports
+    avatar: {fileID: 21300000, guid: da795aad96e614a49abab4caa257a5f4, type: 3}
+    postBody: Tryouts for the Valorant team next Tuesday at 6pm in the Boyd Orr. Bring your own peripherals.
+    timestamp: 5h ago
+    isPhish: 0
+    correctReason: 0
+    impactType: 0
+    stage: 1
+    severity: 0
+    campaignType: 0
+    eventTag: 
+    analysisDifficulty: 0
+  - id: 52
+    displayName: Lisa Fernandez
+    handle: lisafern_art
+    avatar: {fileID: 21300000, guid: da795aad96e614a49abab4caa257a5f4, type: 3}
+    postBody: Finished this charcoal portrait after 3 weeks of pain. Thoughts?
+    timestamp: 6h ago
+    isPhish: 0
+    correctReason: 0
+    impactType: 0
+    stage: 1
+    severity: 0
+    campaignType: 0
+    eventTag: 
+    analysisDifficulty: 0
+  - id: 53
+    displayName: BBC Scotland
+    handle: bbcscotland
+    avatar: {fileID: 21300000, guid: da795aad96e614a49abab4caa257a5f4, type: 3}
+    postBody: Storm warning issued for central Scotland through Thursday evening.
+    timestamp: 1h ago
+    isPhish: 0
+    correctReason: 0
+    impactType: 0
+    stage: 1
+    severity: 0
+    campaignType: 0
+    eventTag: 
+    analysisDifficulty: 0
+  - id: 54
+    displayName: Tom Hayes
+    handle: tomhayes_runs
+    avatar: {fileID: 21300000, guid: da795aad96e614a49abab4caa257a5f4, type: 3}
+    postBody: "Marathon training update: week 12 done. Legs are protesting but we move."
+    timestamp: 3h ago
+    isPhish: 0
+    correctReason: 0
+    impactType: 0
+    stage: 1
+    severity: 0
+    campaignType: 0
+    eventTag: 
+    analysisDifficulty: 0
+  - id: 55
+    displayName: Summer Sessions
+    handle: glasgowsummersessions
+    avatar: {fileID: 21300000, guid: da795aad96e614a49abab4caa257a5f4, type: 3}
+    postBody: "Full lineup announced! Paolo Nutini, Sam Fender, and more. Tickets on sale Friday 10am via glasgowsummersessions.com"
+    timestamp: 1h ago
+    isPhish: 0
+    correctReason: 0
+    impactType: 0
+    stage: 3
+    severity: 0
+    campaignType: 0
+    eventTag: Glasgow Summer Sessions 2026
+    analysisDifficulty: 0
+  - id: 56
+    displayName: Sarah Mitchell
+    handle: sarahmitch_
+    avatar: {fileID: 21300000, guid: da795aad96e614a49abab4caa257a5f4, type: 3}
+    postBody: "Cannot WAIT for Summer Sessions. Already got my tickets sorted through the official site. Anyone else going?"
+    timestamp: 2h ago
+    isPhish: 0
+    correctReason: 0
+    impactType: 0
+    stage: 3
+    severity: 0
+    campaignType: 0
+    eventTag: Glasgow Summer Sessions 2026
+    analysisDifficulty: 0
+  - id: 57
+    displayName: Glasgow Live
+    handle: glasgowlive
+    avatar: {fileID: 21300000, guid: da795aad96e614a49abab4caa257a5f4, type: 3}
+    postBody: "Everything you need to know about Glasgow Summer Sessions 2026 - transport, stages, and entry info. Full guide on our site."
+    timestamp: 3h ago
+    isPhish: 0
+    correctReason: 0
+    impactType: 0
+    stage: 3
+    severity: 0
+    campaignType: 0
+    eventTag: Glasgow Summer Sessions 2026
+    analysisDifficulty: 0
+  - id: 58
+    displayName: First Bus Glasgow
+    handle: firstbusglasgow
+    avatar: {fileID: 21300000, guid: da795aad96e614a49abab4caa257a5f4, type: 3}
+    postBody: "Additional late-night services running from Bellahouston Park during Summer Sessions weekend. Check our app for times."
+    timestamp: 4h ago
+    isPhish: 0
+    correctReason: 0
+    impactType: 0
+    stage: 3
+    severity: 0
+    campaignType: 0
+    eventTag: Glasgow Summer Sessions 2026
+    analysisDifficulty: 0
+  - id: 59
+    displayName: Ryan O'Brien
+    handle: ryanobrien_
+    avatar: {fileID: 21300000, guid: da795aad96e614a49abab4caa257a5f4, type: 3}
+    postBody: "Selling ONE spare Summer Sessions Saturday ticket at face value. DM me - will do the official transfer through glasgowsummersessions.com"
+    timestamp: 2h ago
+    isPhish: 0
+    correctReason: 0
+    impactType: 0
+    stage: 3
+    severity: 0
+    campaignType: 0
+    eventTag: Glasgow Summer Sessions 2026
+    analysisDifficulty: 0
+  - id: 60
+    displayName: VisitScotland
+    handle: visitscotland
+    avatar: {fileID: 21300000, guid: da795aad96e614a49abab4caa257a5f4, type: 3}
+    postBody: "Glasgow Summer Sessions is set to draw over 30,000 visitors to Bellahouston Park. Book accommodation early!"
+    timestamp: 5h ago
+    isPhish: 0
+    correctReason: 0
+    impactType: 0
+    stage: 3
+    severity: 0
+    campaignType: 0
+    eventTag: Glasgow Summer Sessions 2026
+    analysisDifficulty: 0
+  - id: 61
+    displayName: Ben Gallagher
+    handle: ben_gall_music
+    avatar: {fileID: 21300000, guid: da795aad96e614a49abab4caa257a5f4, type: 3}
+    postBody: "My band just got added to the Summer Sessions emerging artists stage!! Still can't believe it."
+    timestamp: 3h ago
+    isPhish: 0
+    correctReason: 0
+    impactType: 0
+    stage: 3
+    severity: 0
+    campaignType: 0
+    eventTag: Glasgow Summer Sessions 2026
+    analysisDifficulty: 0
+  - id: 62
+    displayName: Olivia Chen
+    handle: oliviachen_fit
+    avatar: {fileID: 21300000, guid: da795aad96e614a49abab4caa257a5f4, type: 3}
+    postBody: "Summer Sessions prep: comfortable shoes > fashion. Trust me on this one."
+    timestamp: 4h ago
+    isPhish: 0
+    correctReason: 0
+    impactType: 0
+    stage: 3
+    severity: 0
+    campaignType: 0
+    eventTag: Glasgow Summer Sessions 2026
+    analysisDifficulty: 0
+  - id: 63
+    displayName: BBC Radio Scotland
+    handle: bbcradioscot
+    avatar: {fileID: 21300000, guid: da795aad96e614a49abab4caa257a5f4, type: 3}
+    postBody: "We'll be broadcasting live from Glasgow Summer Sessions all weekend. Tune in from 2pm Saturday."
+    timestamp: 6h ago
+    isPhish: 0
+    correctReason: 0
+    impactType: 0
+    stage: 3
+    severity: 0
+    campaignType: 0
+    eventTag: Glasgow Summer Sessions 2026
+    analysisDifficulty: 0
+  - id: 64
+    displayName: GU Film Society
+    handle: gufilmsoc
+    avatar: {fileID: 21300000, guid: da795aad96e614a49abab4caa257a5f4, type: 3}
+    postBody: "Movie night this Wednesday - Whiplash 4K screening. Nothing to do with Summer Sessions, just a great film."
+    timestamp: 5h ago
+    isPhish: 0
+    correctReason: 0
+    impactType: 0
+    stage: 3
+    severity: 0
+    campaignType: 0
+    eventTag: Glasgow Summer Sessions 2026
+    analysisDifficulty: 0
+  - id: 65
+    displayName: Isla MacDonald
+    handle: islamac_22
+    avatar: {fileID: 21300000, guid: da795aad96e614a49abab4caa257a5f4, type: 3}
+    postBody: "Exam results came in and I passed everything. Summer Sessions is going to be a proper celebration now."
+    timestamp: 1h ago
+    isPhish: 0
+    correctReason: 0
+    impactType: 0
+    stage: 3
+    severity: 0
+    campaignType: 0
+    eventTag: Glasgow Summer Sessions 2026
+    analysisDifficulty: 0
+  - id: 66
+    displayName: The Barras Market
+    handle: thebarrasmarket
+    avatar: {fileID: 21300000, guid: da795aad96e614a49abab4caa257a5f4, type: 3}
+    postBody: "Weekend market on as usual - rain or shine. New vintage stall this week."
+    timestamp: 7h ago
+    isPhish: 0
+    correctReason: 0
+    impactType: 0
+    stage: 3
+    severity: 0
+    campaignType: 0
+    eventTag: Glasgow Summer Sessions 2026
+    analysisDifficulty: 0
+  - id: 67
+    displayName: Clyde Cycle Hire
+    handle: clydecyclehire
+    avatar: {fileID: 21300000, guid: da795aad96e614a49abab4caa257a5f4, type: 3}
+    postBody: "Extra bike stations near Bellahouston Park for Summer Sessions weekend. £1 unlock, first 30 mins free."
+    timestamp: 3h ago
+    isPhish: 0
+    correctReason: 0
+    impactType: 0
+    stage: 3
+    severity: 0
+    campaignType: 0
+    eventTag: Glasgow Summer Sessions 2026
+    analysisDifficulty: 0
+  - id: 68
+    displayName: Amy Stewart
+    handle: amystew_reads
+    avatar: {fileID: 21300000, guid: da795aad96e614a49abab4caa257a5f4, type: 3}
+    postBody: "Just finished reading Klara and the Sun. Genuinely beautiful. Now I need some festival book recs."
+    timestamp: 6h ago
+    isPhish: 0
+    correctReason: 0
+    impactType: 0
+    stage: 3
+    severity: 0
+    campaignType: 0
+    eventTag: Glasgow Summer Sessions 2026
+    analysisDifficulty: 0
+  - id: 69
+    displayName: STV News
+    handle: stvnews
+    avatar: {fileID: 21300000, guid: da795aad96e614a49abab4caa257a5f4, type: 3}
+    postBody: "Road closures confirmed around Bellahouston Park for Summer Sessions setup. Full list on our website."
+    timestamp: 2h ago
+    isPhish: 0
+    correctReason: 0
+    impactType: 0
+    stage: 3
+    severity: 0
+    campaignType: 0
+    eventTag: Glasgow Summer Sessions 2026
+    analysisDifficulty: 0
+  - id: 70
+    displayName: Summer Sessions Tickets
+    handle: summertix_resale
+    avatar: {fileID: 21300000, guid: da795aad96e614a49abab4caa257a5f4, type: 3}
+    postBody: "LAST CHANCE - Saturday Summer Sessions tickets going for 40% off! Grab yours before they're gone: http://sommersessions-deals.net/tickets"
+    timestamp: 30m ago
     isPhish: 1
-    correctReason: 5
+    correctReason: 1
     impactType: 2
+    stage: 3
+    severity: 3
+    campaignType: 2
+    eventTag: Glasgow Summer Sessions 2026
+    analysisDifficulty: 2
+  - id: 71
+    displayName: Summer Sessions Merch
+    handle: officially_ss_merch
+    avatar: {fileID: 21300000, guid: da795aad96e614a49abab4caa257a5f4, type: 3}
+    postBody: "Pre-order exclusive Summer Sessions merch - hoodies, caps, and more. Ships before the event! Register here to reserve yours: http://ss-merch-store.com/preorder"
+    timestamp: 1h ago
+    isPhish: 1
+    correctReason: 2
+    impactType: 4
+    stage: 3
+    severity: 3
+    campaignType: 2
+    eventTag: Glasgow Summer Sessions 2026
+    analysisDifficulty: 3
+  - id: 72
+    displayName: Travel Refund Desk
+    handle: festivaltravel_refunds
+    avatar: {fileID: 21300000, guid: da795aad96e614a49abab4caa257a5f4, type: 3}
+    postBody: "Festival weekend travel disruption update: some flights and hotels are issuing quick refunds. Submit your details here before the window closes: http://refund-claims-portal.support"
+    timestamp: 45m ago
+    isPhish: 1
+    correctReason: 1
+    impactType: 1
+    stage: 3
+    severity: 4
+    campaignType: 2
+    eventTag: Glasgow Summer Sessions 2026
+    analysisDifficulty: 4
+  - id: 73
+    displayName: QuickSurvey UK
+    handle: quicksurvey_uk
+    avatar: {fileID: 21300000, guid: da795aad96e614a49abab4caa257a5f4, type: 3}
+    postBody: "Take our quick 2-minute festival habits survey and win a £200 Ticketmaster voucher! Open to everyone: http://quicksurvey-rewards.com/festival"
+    timestamp: 2h ago
+    isPhish: 1
+    correctReason: 4
+    impactType: 4
     stage: 3
     severity: 2
     campaignType: 2
-    eventTag: election
+    eventTag: Glasgow Summer Sessions 2026
+    analysisDifficulty: 1
+  - id: 74
+    displayName: Account Safety Notice
+    handle: safety_notice_uk
+    avatar: {fileID: 21300000, guid: da795aad96e614a49abab4caa257a5f4, type: 3}
+    postBody: "Security alert: Protect your account from hackers! Verify your identity to prevent lockout: http://secure-login-check[dot]net"
+    timestamp: 50m ago
+    isPhish: 1
+    correctReason: 3
+    impactType: 1
+    stage: 3
+    severity: 4
+    campaignType: 1
+    eventTag: Glasgow Summer Sessions 2026
     analysisDifficulty: 2
-  - id: 11
-    displayName: McQueen
-    handle: McQueen95
-    avatar: {fileID: 21300000, guid: da795aad96e614a49abab4caa257a5f4, type: 3}
-    postBody: 'Can''t believe I placed first in my debut tournament!
-
-      #GoLightning'
-    timestamp: 1h
-    isPhish: 0
-    correctReason: 0
-    impactType: 0
-    stage: 3
-    severity: 0
-    campaignType: 0
-    eventTag: 
-    analysisDifficulty: 0
-  - id: 11
-    displayName: McQueen
-    handle: McQueen95
-    avatar: {fileID: 21300000, guid: da795aad96e614a49abab4caa257a5f4, type: 3}
-    postBody: 'Can''t believe I placed first in my debut tournament!
-
-      #GoLightning'
-    timestamp: 1h
-    isPhish: 0
-    correctReason: 0
-    impactType: 0
-    stage: 3
-    severity: 0
-    campaignType: 0
-    eventTag: 
-    analysisDifficulty: 0

@@ -8,13 +8,37 @@ public class MessageDropZone : BaseDropZone
     void Awake()
     {
         composer = GetComponentInParent<PhishingComposer>();
-        maxCapacity = 5;
+        maxCapacity = 6;
     }
 
     protected override void OnCardAdded(BaseDraggableCard card)
     {
         // Tell the manager to recalculate stats based on new card.
         NotifyComposer();
+    }
+
+    protected override bool CanAcceptCard(BaseDraggableCard card)
+    {
+        // Keep base capacity behavior.
+        if (currentCards.Count >= maxCapacity) return false;
+
+        // Only module cards are valid for this drop zone.
+        PhishingModuleCard incomingCard = card as PhishingModuleCard;
+        if (incomingCard == null || incomingCard.Module == null) return false;
+
+        ModuleType incomingType = incomingCard.Module.type;
+
+        // Reject if a card with the same module type already exists in this zone.
+        foreach (BaseDraggableCard existingCard in currentCards)
+        {
+            PhishingModuleCard pCard = existingCard as PhishingModuleCard;
+            if (pCard != null && pCard.Module != null && pCard.Module.type == incomingType)
+            {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     protected override void OnCardRemoved(BaseDraggableCard card)

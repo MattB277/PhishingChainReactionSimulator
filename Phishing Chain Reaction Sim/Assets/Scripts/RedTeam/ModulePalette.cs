@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine.UI;
+using System.Linq;
 
 public class ModulePalette : BasePalette
 {
@@ -36,7 +37,13 @@ public class ModulePalette : BasePalette
         }
         activeCards.Clear(); // clear active cards dictionary
 
-        List<PhishingModule> modules = database.GetUnlockedModules(level);
+        List<PhishingModule> modules = database.GetUnlockedModules(level); // add level modules to palette
+        modules.AddRange(database.GetFillerModules()); // add filler modules to palette
+
+        // randomise modules list so they appear in different order each time
+        modules = modules.OrderBy(_ => Random.value).ToList();
+        // order by hook, then body, then signature (so hooks appear at top of palette, then bodies, then signatures)
+        modules = modules.OrderBy(m => m.type).ToList();
 
         foreach (var moduleData in modules)
         {

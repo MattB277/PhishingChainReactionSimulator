@@ -3,6 +3,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Collections.Generic;
 
 public class PhishingComposer : MonoBehaviour
 {
@@ -19,6 +20,17 @@ public class PhishingComposer : MonoBehaviour
     [SerializeField] private TextMeshProUGUI resultText;
     [SerializeField] private Button nextLevelButton; // only appears on win
     [SerializeField] private Button closeResultButton; // only appears on fail
+
+    private const float RequiredSuccess = 0.60f;   // 80%
+    private const float MaxSuspicion = 0.60f;      // 40%
+
+    private struct SubmissionResult
+    {
+        public bool IsWin;
+        public float Success;      // 0-1
+        public float Suspicion;    // 0-1
+        public List<string> Messages;
+    }
     
     void Start()
     {
@@ -41,43 +53,86 @@ public class PhishingComposer : MonoBehaviour
         dropZone.ClearAllModules();
         OnModulesChanged(); // recalculate sliders
     }
-    
+
     public void SendPost()
     {
         var currentModules = dropZone.GetCurrentModuleData();
 
-        if (currentModules.Count == 0)
+        if (currentModules == null || currentModules.Count == 0)
         {
             Debug.Log("PhishingComposer: Cannot send empty messages");
             return;
         }
 
-        // calculate final score
-        float finalScorePercent = Mathf.Clamp01(successSlider.value - suspicionSlider.value) * 100f;
-        // get threshold from ScenarioManager
-        float scenarioThreshold = ScenarioManager.Instance.GetCurrentTreshold();
+        float success = Mathf.Clamp01(currentModules.Sum(m => m.successModifier));
+        float suspicion = Mathf.Clamp01(currentModules.Sum(m => m.suspicionModifier));
 
-        bool isWin = finalScorePercent >= scenarioThreshold;
+        var result = EvaluateSubmission(currentModules, success, suspicion);
 
-        ShowResult(isWin, finalScorePercent, scenarioThreshold);
+        ShowResult(result);
     }
 
-    private void ShowResult(bool isWin, float score, float threshold)
+    private SubmissionResult EvaluateSubmission(List<PhishingModule> modules, float success, float suspicion)
+    {
+        var messages = new List<string>();
+
+        // Structural validity checks
+        bool hasPayload = modules.Any(m => m.type == ModuleType.PayloadLink);
+        bool hasCta = modules.Any(m => m.type == ModuleType.CallToAction);
+        bool hasHook = modules.Any(m => m.type == ModuleType.Hook);
+
+        if (!hasPayload)
+            messages.Add("No payload/link selected. Without a link or attachment, the victim has nothing to click - the phish can't do anything.");
+
+        if (!hasCta)
+            messages.Add("No call-to-action selected. You haven't asked the victim to do anything, so even a convincing post won't convert.");
+
+        if (!hasHook)
+            messages.Add("No hook selected. The message lacks a reason for the victim to engage (offer, news, claim, etc.).");
+
+        // If the basics are missing, fail immediately with explanatory feedback.
+        bool structurallyValid = hasPayload && hasCta;
+        if (!structurallyValid)
+        {
+            return new SubmissionResult
+            {
+                IsWin = false,
+                Success = success,
+                Suspicion = suspicion,
+                Messages = messages
+            };
+        }
+
+        // Stat gates
+        if (success < RequiredSuccess)
+            messages.Add($"Success is too low: {(success * 100f):0}% (need at least {(RequiredSuccess * 100f):0}%). Add a stronger hook, authority cue, or social proof.");
+
+        if (suspicion >= MaxSuspicion)
+            messages.Add($"Suspicion is too high: {(suspicion * 100f):0}% (must be under {(MaxSuspicion * 100f):0}%). Remove obvious pressure or a dodgy payload and try a cleaner call to action.");
+
+        bool isWin = success >= RequiredSuccess && suspicion < MaxSuspicion;
+
+        if (isWin)
+            messages.Add($"Success: {(success * 100f):0}% and Suspicion: {(suspicion * 100f):0}%. This is believable enough to catch someone out.");
+
+        return new SubmissionResult
+        {
+            IsWin = isWin,
+            Success = success,
+            Suspicion = suspicion,
+            Messages = messages
+        };
+    }
+
+    private void ShowResult(SubmissionResult result)
     {
         resultPanel.SetActive(true);
 
-        if (isWin)
-        {
-            resultText.text = "Placeholder Success";
-            nextLevelButton.gameObject.SetActive(true);
-            closeResultButton.gameObject.SetActive(false);
-        }
-        else
-        {
-            resultText.text = "Placeholder Fail";
-            nextLevelButton.gameObject.SetActive(false);
-            closeResultButton.gameObject.SetActive(true);
-        }
+        // Multi line feedback
+        resultText.text = string.Join("\n\n", result.Messages);
+
+        nextLevelButton.gameObject.SetActive(result.IsWin);
+        closeResultButton.gameObject.SetActive(!result.IsWin);
     }
 
     public void AdvanceLevel()

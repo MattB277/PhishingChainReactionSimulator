@@ -18,6 +18,10 @@ public class ScenarioManager : MonoBehaviour
 {
     [Header("UI References")]
     [SerializeField] private TextMeshProUGUI scenarioText;
+    [SerializeField] private StageContextPanel stageContextPanel;
+
+    private const string RedTeamContext = "Red Team Briefing: Craft a convincing phishing message by combining one card of each module type. Balance realism and persuasion to maximise the attack score.";
+    private bool hasShownInitialContext;
 
     [Header("Scenario Configuration")]
     [SerializeField] private List<ScenarioProfile> scenarios;
@@ -40,7 +44,8 @@ public class ScenarioManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        LoadScenario(1); 
+        LoadScenario(1);
+        ShowInitialContextOnce();
     }
 
     public void LoadScenario(int level)
@@ -49,11 +54,23 @@ public class ScenarioManager : MonoBehaviour
 
         if (CurrentLevelIdx >= 0 && CurrentLevelIdx < scenarios.Count)
         {
-            scenarioText.text = scenarios[CurrentLevelIdx].scenarioBrief; // set Text box label to ScenarioBrief string
+            if (scenarioText != null)
+                scenarioText.text = scenarios[CurrentLevelIdx].scenarioBrief; // set Text box label to ScenarioBrief string
         } else
         {
             Debug.LogWarning($"ScenarioManager: No text found for level {level}");
         }
+    }
+
+    private void ShowInitialContextOnce()
+    {
+        if (hasShownInitialContext) return;
+        hasShownInitialContext = true;
+
+        if (stageContextPanel != null)
+            stageContextPanel.Show(1, RedTeamContext);
+        else
+            Debug.LogWarning("ScenarioManager: StageContextPanel reference missing for Red Team context popup.");
     }
 
     public float GetCurrentTreshold()

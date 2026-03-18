@@ -18,10 +18,11 @@ public class ModuleDatabase : ScriptableObject
         return allModules.Where(m => m.unlockLevel == currentLevel).ToList();
     }
 
-    // Get modules of a given type that are unlocked.
-    public List<PhishingModule> GetModulesByType(ModuleType type, int currentLevel)
+    // Get a random selection of filler modules that are always unlocked (unlockLevel 0)
+    public List<PhishingModule> GetFillerModules(int count = 5)
     {
-        return allModules.Where(m => m.type == type && m.unlockLevel <= currentLevel).ToList();
+        return allModules
+            .Where(m => m.unlockLevel == 0).OrderBy(_ => Random.value).Take(count).ToList();
     }
 
     // Get a module by its ID

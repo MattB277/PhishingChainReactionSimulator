@@ -4,16 +4,12 @@ using UnityEngine;
 public enum ModuleType
 {
     Greeting,   // How the target is addressed
-    Context,    // Addional general text
     Hook,       // The lure of the message
-    Claim,      // The false claim to make 
-    Urgency,    // Time pressure/consequence
-    Action,     // What we want the victim to do
-    Link,       // The malicious URL/payload
+    Pressure,    // Time pressure/consequence
+    Authority,  // Impersonation signals
     SocialProof,   // Fake verifications, followers etc
-    Emoji,      // Emotional manupulation
-    Authority,  // Impersonation signals (optional)
-    Signature   // Closing text (name, titles, contact etc)
+    CallToAction,   // The CTA urging the target to act
+    PayloadLink    // The malicious link or attachment
 }
 
 /// Represents a single phishing technique module "card" that can be dragged into the composer
@@ -22,7 +18,6 @@ public class PhishingModule
 {
     public string id; // Unique ID
     public string displayText; // Text shown on module card
-    public string postText; // Actual text inserted into post
     public ModuleType type; 
 
     [Range(0f, 1f)]

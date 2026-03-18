@@ -13,43 +13,1002 @@ MonoBehaviour:
   m_Name: ModuleDatabase
   m_EditorClassIdentifier: PhishingSimulator::ModuleDatabase
   allModules:
-  - id: 1
-    displayText: Test
-    postText: Test Post text
+  - id: L0_G_HEY
+    displayText: Hey
     type: 0
-    successModifier: 0.23
-    suspicionModifier: -0.3
-    unlockLevel: 1
-    techniqueName: Impersonation
+    successModifier: 0.03
+    suspicionModifier: 0
+    unlockLevel: 0
+    techniqueName: Greeting
     cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
     icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
-  - id: 2
-    displayText: Test Card 2
-    postText: Hook Test Text
-    type: 2
-    successModifier: 0.23
-    suspicionModifier: -0.3
-    unlockLevel: 1
-    techniqueName: Tactic
+  - id: L0_G_HIALL
+    displayText: "Hi everyone,"
+    type: 0
+    successModifier: 0.04
+    suspicionModifier: 0
+    unlockLevel: 0
+    techniqueName: Greeting
     cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
     icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
-  - id: 3
-    displayText: Perfect Success Test Card
-    postText: Post Text redundant
-    type: 2
-    successModifier: 1
-    suspicionModifier: -1
-    unlockLevel: 1
-    techniqueName: Tactic
+  - id: L0_G_QUICKQ
+    displayText: "Quick question:"
+    type: 0
+    successModifier: 0.06
+    suspicionModifier: 0.02
+    unlockLevel: 0
+    techniqueName: Greeting
     cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
     icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
-  - id: 4
-    displayText: Level 2 Card
-    postText: Post Text redundant
+  - id: L0_G_FYI
+    displayText: "FYI -"
+    type: 0
+    successModifier: 0.03
+    suspicionModifier: 0.01
+    unlockLevel: 0
+    techniqueName: Greeting
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L0_H_SHARING
+    displayText: Sharing this in case it helps someone.
+    type: 1
+    successModifier: 0.07
+    suspicionModifier: 0.02
+    unlockLevel: 0
+    techniqueName: Hook
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L0_H_PSA
+    displayText: "PSA for anyone who needs this:"
+    type: 1
+    successModifier: 0.08
+    suspicionModifier: 0.04
+    unlockLevel: 0
+    techniqueName: Hook
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L0_H_HEADSUP
+    displayText: "Just a heads up:"
+    type: 1
+    successModifier: 0.06
+    suspicionModifier: 0.03
+    unlockLevel: 0
+    techniqueName: Hook
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L0_H_THISWORKS
+    displayText: This actually works (surprisingly).
+    type: 1
+    successModifier: 0.09
+    suspicionModifier: 0.07
+    unlockLevel: 0
+    techniqueName: Hook
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L0_P_TODAY
+    displayText: Only available today.
     type: 2
-    successModifier: 1
-    suspicionModifier: -1
+    successModifier: 0.08
+    suspicionModifier: 0.10
+    unlockLevel: 0
+    techniqueName: Pressure
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L0_P_DONTWAIT
+    displayText: Don’t wait too long on this.
+    type: 2
+    successModifier: 0.06
+    suspicionModifier: 0.09
+    unlockLevel: 0
+    techniqueName: Pressure
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L0_P_LIMITED
+    displayText: Limited spots / limited availability.
+    type: 2
+    successModifier: 0.07
+    suspicionModifier: 0.11
+    unlockLevel: 0
+    techniqueName: Pressure
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L0_P_LASTCHANCE
+    displayText: Last chance before it’s gone.
+    type: 2
+    successModifier: 0.09
+    suspicionModifier: 0.14
+    unlockLevel: 0
+    techniqueName: Pressure
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L0_AU_OFFICIALISH
+    displayText: Official update.
+    type: 3
+    successModifier: 0.06
+    suspicionModifier: 0.08
+    unlockLevel: 0
+    techniqueName: Authority
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L0_AU_TEAM
+    displayText: Posting on behalf of the team.
+    type: 3
+    successModifier: 0.07
+    suspicionModifier: 0.10
+    unlockLevel: 0
+    techniqueName: Authority
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L0_AU_VERIFIEDTEXT
+    displayText: Verified source.
+    type: 3
+    successModifier: 0.05
+    suspicionModifier: 0.12
+    unlockLevel: 0
+    techniqueName: Authority
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L0_AU_SECURITY
+    displayText: For your security, follow the steps below.
+    type: 3
+    successModifier: 0.08
+    suspicionModifier: 0.14
+    unlockLevel: 0
+    techniqueName: Authority
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L0_SP_MANYUSERS
+    displayText: A lot of people are using this right now.
+    type: 4
+    successModifier: 0.08
+    suspicionModifier: 0.08
+    unlockLevel: 0
+    techniqueName: SocialProof
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L0_SP_COMMENTS
+    displayText: Comments are saying it worked for them.
+    type: 4
+    successModifier: 0.07
+    suspicionModifier: 0.08
+    unlockLevel: 0
+    techniqueName: SocialProof
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L0_SP_SEENEVERYWHERE
+    displayText: Seen this all over my feed today.
+    type: 4
+    successModifier: 0.06
+    suspicionModifier: 0.07
+    unlockLevel: 0
+    techniqueName: SocialProof
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L0_SP_TRUSTME
+    displayText: Trust me — I wouldn’t share it if it was fake.
+    type: 4
+    successModifier: 0.06
+    suspicionModifier: 0.12
+    unlockLevel: 0
+    techniqueName: SocialProof
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L0_CTA_CLICK
+    displayText: "Click here:"
+    type: 5
+    successModifier: 0.08
+    suspicionModifier: 0.08
+    unlockLevel: 0
+    techniqueName: CallToAction
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L0_CTA_CHECK
+    displayText: "Check this out:"
+    type: 5
+    successModifier: 0.06
+    suspicionModifier: 0.05
+    unlockLevel: 0
+    techniqueName: CallToAction
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L0_CTA_REPLY
+    displayText: Reply if you want the link.
+    type: 5
+    successModifier: 0.07
+    suspicionModifier: 0.10
+    unlockLevel: 0
+    techniqueName: CallToAction
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L0_CTA_SHARE
+    displayText: Share this with someone who needs it.
+    type: 5
+    successModifier: 0.05
+    suspicionModifier: 0.10
+    unlockLevel: 0
+    techniqueName: CallToAction
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L0_PAY_GENERIC1
+    displayText: short.link/offer
+    type: 6
+    successModifier: 0.06
+    suspicionModifier: 0.20
+    unlockLevel: 0
+    techniqueName: PayloadLink
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L0_PAY_GENERIC2
+    displayText: update-news[dot]site/read
+    type: 6
+    successModifier: 0.08
+    suspicionModifier: 0.22
+    unlockLevel: 0
+    techniqueName: PayloadLink
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L0_PAY_GENERIC3
+    displayText: verify-access[dot]com/continue
+    type: 6
+    successModifier: 0.09
+    suspicionModifier: 0.25
+    unlockLevel: 0
+    techniqueName: PayloadLink
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L0_PAY_GENERIC4
+    displayText: download-file[dot]zip/get
+    type: 6
+    successModifier: 0.05
+    suspicionModifier: 0.35
+    unlockLevel: 0
+    techniqueName: PayloadLink
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L1_G_CASUAL
+    displayText: "Hey everyone — quick question for anyone job hunting right now:"
+    type: 0
+    successModifier: 0.15
+    suspicionModifier: 0
+    unlockLevel: 1
+    techniqueName: Greeting
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L1_G_FORMAL
+    displayText: "Attention job seekers:"
+    type: 0
+    successModifier: 0.08
+    suspicionModifier: 0.05
+    unlockLevel: 1
+    techniqueName: Greeting
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L1_H_SALARY
+    displayText: We’re hiring for a remote role — up to $80/hr depending on experience.
+    type: 1
+    successModifier: 0.30
+    suspicionModifier: 0.10
+    unlockLevel: 1
+    techniqueName: Hook
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L1_H_ENTRY
+    displayText: No experience needed. Quick application and fast response.
+    type: 1
+    successModifier: 0.18
+    suspicionModifier: 0.10
+    unlockLevel: 1
+    techniqueName: Hook
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L1_H_WFH
+    displayText: Work from home. Flexible hours. Weekly payouts.
+    type: 1
+    successModifier: 0.22
+    suspicionModifier: 0.14
+    unlockLevel: 1
+    techniqueName: Hook
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L1_P_SHORTLIST
+    displayText: We’re shortlisting today — please apply within the next hour.
+    type: 2
+    successModifier: 0.15
+    suspicionModifier: 0.20
+    unlockLevel: 1
+    techniqueName: Pressure
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L1_P_LASTSLOTS
+    displayText: Last few slots left — applications close soon.
+    type: 2
+    successModifier: 0.13
+    suspicionModifier: 0.18
+    unlockLevel: 1
+    techniqueName: Pressure
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L1_AU_RECRUIT
+    displayText: Official recruitment post (partner programme).
+    type: 3
+    successModifier: 0.12
+    suspicionModifier: 0.15
+    unlockLevel: 1
+    techniqueName: Authority
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L1_AU_SCREENING
+    displayText: HR screening link for shortlisted candidates.
+    type: 3
+    successModifier: 0.10
+    suspicionModifier: 0.16
+    unlockLevel: 1
+    techniqueName: Authority
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L1_SP_APPLIED
+    displayText: 93 people have already applied — don’t miss out.
+    type: 4
+    successModifier: 0.10
+    suspicionModifier: 0.10
+    unlockLevel: 1
+    techniqueName: SocialProof
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L1_SP_STARTING
+    displayText: People are starting this week — I’ve seen multiple updates already.
+    type: 4
+    successModifier: 0.08
+    suspicionModifier: 0.10
+    unlockLevel: 1
+    techniqueName: SocialProof
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L1_CTA_FORM
+    displayText: Fill out this short form and we’ll get back to you.
+    type: 5
+    successModifier: 0.18
+    suspicionModifier: 0.05
+    unlockLevel: 1
+    techniqueName: CallToAction
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L1_CTA_COMMENT
+    displayText: Comment "INFO" and I’ll reply with details.
+    type: 5
+    successModifier: 0.14
+    suspicionModifier: 0.10
+    unlockLevel: 1
+    techniqueName: CallToAction
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L1_CTA_DM
+    displayText: DM me “APPLY” and I’ll send the link.
+    type: 5
+    successModifier: 0.12
+    suspicionModifier: 0.14
+    unlockLevel: 1
+    techniqueName: CallToAction
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L1_PAY_FORMS
+    displayText: forms.gle/secure-job-app
+    type: 6
+    successModifier: 0.10
+    suspicionModifier: 0.10
+    unlockLevel: 1
+    techniqueName: PayloadLink
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L1_PAY_LOOKALIKE
+    displayText: remote-role-apply[dot]com/start
+    type: 6
+    successModifier: 0.11
+    suspicionModifier: 0.22
+    unlockLevel: 1
+    techniqueName: PayloadLink
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L1_PAY_EXE
+    displayText: job-description.exe
+    type: 6
+    successModifier: 0.02
+    suspicionModifier: 0.90
+    unlockLevel: 1
+    techniqueName: PayloadLink
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L2_G_HYPE
+    displayText: "FOOTBALL FANS — quick one:"
+    type: 0
+    successModifier: 0.12
+    suspicionModifier: 0.05
     unlockLevel: 2
-    techniqueName: Tactic
+    techniqueName: Greeting
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L2_G_MATCHDAY
+    displayText: "Match day special for anyone watching live:"
+    type: 0
+    successModifier: 0.10
+    suspicionModifier: 0.06
+    unlockLevel: 2
+    techniqueName: Greeting
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L2_H_BONUS
+    displayText: 500% match bonus active right now.
+    type: 1
+    successModifier: 0.32
+    suspicionModifier: 0.18
+    unlockLevel: 2
+    techniqueName: Hook
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L2_H_FREEBET
+    displayText: Free bet for new accounts — no deposit needed.
+    type: 1
+    successModifier: 0.22
+    suspicionModifier: 0.14
+    unlockLevel: 2
+    techniqueName: Hook
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L2_H_EXCLUSIVE
+    displayText: Private promo link going around — works on new accounts.
+    type: 1
+    successModifier: 0.22
+    suspicionModifier: 0.18
+    unlockLevel: 2
+    techniqueName: Hook
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L2_P_TIMER
+    displayText: Only live for 10 minutes — after that it disappears.
+    type: 2
+    successModifier: 0.18
+    suspicionModifier: 0.22
+    unlockLevel: 2
+    techniqueName: Pressure
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L2_P_HALFTIME
+    displayText: Offer ends at half-time — don’t miss it.
+    type: 2
+    successModifier: 0.14
+    suspicionModifier: 0.18
+    unlockLevel: 2
+    techniqueName: Pressure
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L2_AU_PARTNER
+    displayText: Official partner promo.
+    type: 3
+    successModifier: 0.10
+    suspicionModifier: 0.12
+    unlockLevel: 2
+    techniqueName: Authority
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L2_AU_VIP
+    displayText: VIP promo access (limited release).
+    type: 3
+    successModifier: 0.09
+    suspicionModifier: 0.14
+    unlockLevel: 2
+    techniqueName: Authority
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L2_SP_WINNER
+    displayText: Just hit £500 off the free bet — it actually worked.
+    type: 4
+    successModifier: 0.16
+    suspicionModifier: 0.12
+    unlockLevel: 2
+    techniqueName: SocialProof
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L2_SP_EVERYONE
+    displayText: Everyone in the replies is using it tonight.
+    type: 4
+    successModifier: 0.12
+    suspicionModifier: 0.12
+    unlockLevel: 2
+    techniqueName: SocialProof
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L2_SP_SCREENSHOTS
+    displayText: People are posting screenshots — it’s legit.
+    type: 4
+    successModifier: 0.10
+    suspicionModifier: 0.14
+    unlockLevel: 2
+    techniqueName: SocialProof
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L2_CTA_CLAIM
+    displayText: Click below to claim the free bet.
+    type: 5
+    successModifier: 0.16
+    suspicionModifier: 0.10
+    unlockLevel: 2
+    techniqueName: CallToAction
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L2_CTA_SIGNUP
+    displayText: "Sign up here to activate it:"
+    type: 5
+    successModifier: 0.14
+    suspicionModifier: 0.12
+    unlockLevel: 2
+    techniqueName: CallToAction
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L2_PAY_SHORT
+    displayText: bit.ly/free-bet-24
+    type: 6
+    successModifier: 0.10
+    suspicionModifier: 0.22
+    unlockLevel: 2
+    techniqueName: PayloadLink
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L2_PAY_LOOKALIKE
+    displayText: live-bet-bonus[dot]com/claim
+    type: 6
+    successModifier: 0.12
+    suspicionModifier: 0.25
+    unlockLevel: 2
+    techniqueName: PayloadLink
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L2_PAY_APP
+    displayText: bonus-activate[dot]app/start
+    type: 6
+    successModifier: 0.11
+    suspicionModifier: 0.28
+    unlockLevel: 2
+    techniqueName: PayloadLink
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L3_G_FAN
+    displayText: Love your recent posts — your content has been blowing up.
+    type: 0
+    successModifier: 0.18
+    suspicionModifier: 0.05
+    unlockLevel: 3
+    techniqueName: Greeting
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L3_G_PRO
+    displayText: "Hi — reaching out about a paid partnership opportunity:"
+    type: 0
+    successModifier: 0.14
+    suspicionModifier: 0.08
+    unlockLevel: 3
+    techniqueName: Greeting
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L3_H_SPONSOR
+    displayText: We want to sponsor your next post for $1,000.
+    type: 1
+    successModifier: 0.30
+    suspicionModifier: 0.12
+    unlockLevel: 3
+    techniqueName: Hook
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L3_H_LONGTERM
+    displayText: Looking for a long-term creator partnership (paid).
+    type: 1
+    successModifier: 0.22
+    suspicionModifier: 0.10
+    unlockLevel: 3
+    techniqueName: Hook
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L3_P_FAST
+    displayText: Need confirmation today so we can lock the budget.
+    type: 2
+    successModifier: 0.14
+    suspicionModifier: 0.18
+    unlockLevel: 3
+    techniqueName: Pressure
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L3_P_48H
+    displayText: We need it signed within 48 hours to keep the slot.
+    type: 2
+    successModifier: 0.12
+    suspicionModifier: 0.16
+    unlockLevel: 3
+    techniqueName: Pressure
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L3_AU_TEAM
+    displayText: Campaign team — partnerships desk.
+    type: 3
+    successModifier: 0.12
+    suspicionModifier: 0.12
+    unlockLevel: 3
+    techniqueName: Authority
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L3_AU_BRAND
+    displayText: Brand partnerships coordinator (campaign approval).
+    type: 3
+    successModifier: 0.11
+    suspicionModifier: 0.14
+    unlockLevel: 3
+    techniqueName: Authority
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L3_SP_CREATORS
+    displayText: We’ve worked with a few creators in your niche already.
+    type: 4
+    successModifier: 0.12
+    suspicionModifier: 0.10
+    unlockLevel: 3
+    techniqueName: SocialProof
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L3_SP_REFERRED
+    displayText: A creator friend referred your page to us.
+    type: 4
+    successModifier: 0.10
+    suspicionModifier: 0.11
+    unlockLevel: 3
+    techniqueName: SocialProof
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L3_CTA_REVIEW
+    displayText: Please review the contract and reply “approved”.
+    type: 5
+    successModifier: 0.16
+    suspicionModifier: 0.10
+    unlockLevel: 3
+    techniqueName: CallToAction
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L3_CTA_OPENPC
+    displayText: Please open it on PC so all sections load properly.
+    type: 5
+    successModifier: 0.12
+    suspicionModifier: 0.18
+    unlockLevel: 3
+    techniqueName: CallToAction
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L3_PAY_DOCSEND
+    displayText: docsend.com/view/contract
+    type: 6
+    successModifier: 0.18
+    suspicionModifier: 0.10
+    unlockLevel: 3
+    techniqueName: PayloadLink
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L3_PAY_SCR
+    displayText: dropbox.com/collab-contract.scr
+    type: 6
+    successModifier: 0.06
+    suspicionModifier: 0.45
+    unlockLevel: 3
+    techniqueName: PayloadLink
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L3_PAY_LOOKALIKE
+    displayText: doc-send-contract[dot]com/view
+    type: 6
+    successModifier: 0.14
+    suspicionModifier: 0.28
+    unlockLevel: 3
+    techniqueName: PayloadLink
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L4_G_PLEA
+    displayText: URGENT: People affected need help right now.
+    type: 0
+    successModifier: 0.18
+    suspicionModifier: 0.08
+    unlockLevel: 4
+    techniqueName: Greeting
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L4_G_HASHTAG
+    displayText: "If you’re following the updates, please read this:"
+    type: 0
+    successModifier: 0.12
+    suspicionModifier: 0.10
+    unlockLevel: 4
+    techniqueName: Greeting
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L4_H_LOGISTICS
+    displayText: We’re sending trucks to the area — supplies are running out.
+    type: 1
+    successModifier: 0.16
+    suspicionModifier: 0.08
+    unlockLevel: 4
+    techniqueName: Hook
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L4_H_SUPPLIES
+    displayText: Water and medical supplies are needed urgently.
+    type: 1
+    successModifier: 0.14
+    suspicionModifier: 0.08
+    unlockLevel: 4
+    techniqueName: Hook
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L4_P_NOW
+    displayText: Please donate in the next 30 minutes so we can dispatch tonight.
+    type: 2
+    successModifier: 0.14
+    suspicionModifier: 0.22
+    unlockLevel: 4
+    techniqueName: Pressure
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L4_P_MATCH
+    displayText: "Matching window ends soon — donate while it’s doubled:"
+    type: 2
+    successModifier: 0.15
+    suspicionModifier: 0.20
+    unlockLevel: 4
+    techniqueName: Pressure
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L4_AU_ORGVOICE
+    displayText: Verified relief campaign update.
+    type: 3
+    successModifier: 0.12
+    suspicionModifier: 0.15
+    unlockLevel: 4
+    techniqueName: Authority
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L4_AU_COORD
+    displayText: Relief coordinator update (official donation link).
+    type: 3
+    successModifier: 0.10
+    suspicionModifier: 0.18
+    unlockLevel: 4
+    techniqueName: Authority
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L4_SP_MATCHING
+    displayText: Local businesses are matching donations today.
+    type: 4
+    successModifier: 0.18
+    suspicionModifier: 0.12
+    unlockLevel: 4
+    techniqueName: SocialProof
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L4_SP_SHARED
+    displayText: I’ve seen this shared everywhere — boosting for visibility.
+    type: 4
+    successModifier: 0.10
+    suspicionModifier: 0.10
+    unlockLevel: 4
+    techniqueName: SocialProof
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L4_SP_DONATED
+    displayText: Donated — even $5 helps if everyone chips in.
+    type: 4
+    successModifier: 0.12
+    suspicionModifier: 0.11
+    unlockLevel: 4
+    techniqueName: SocialProof
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L4_CTA_DONATE
+    displayText: Donate using the link below (any amount helps).
+    type: 5
+    successModifier: 0.16
+    suspicionModifier: 0.08
+    unlockLevel: 4
+    techniqueName: CallToAction
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L4_CTA_REPOST
+    displayText: Please repost so this reaches more people.
+    type: 5
+    successModifier: 0.10
+    suspicionModifier: 0.14
+    unlockLevel: 4
+    techniqueName: CallToAction
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L4_PAY_TYPOSQUAT
+    displayText: redcross-support-fund.org
+    type: 6
+    successModifier: 0.18
+    suspicionModifier: 0.18
+    unlockLevel: 4
+    techniqueName: PayloadLink
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L4_PAY_CRYPTO
+    displayText: "Send ETH to support anonymously: 0x9f... (address)"
+    type: 6
+    successModifier: 0.08
+    suspicionModifier: 0.40
+    unlockLevel: 4
+    techniqueName: PayloadLink
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L4_PAY_BANK
+    displayText: donate-relief-now[dot]org/pay
+    type: 6
+    successModifier: 0.14
+    suspicionModifier: 0.24
+    unlockLevel: 4
+    techniqueName: PayloadLink
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L5_G_NEWS
+    displayText: "Seeing this everywhere, posting in case you missed it:"
+    type: 0
+    successModifier: 0.14
+    suspicionModifier: 0.05
+    unlockLevel: 5
+    techniqueName: Greeting
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L5_G_THREAD
+    displayText: "Thread for anyone who wants the full details:"
+    type: 0
+    successModifier: 0.10
+    suspicionModifier: 0.08
+    unlockLevel: 5
+    techniqueName: Greeting
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L5_H_BREAKING
+    displayText: "BREAKING: new footage/details just dropped."
+    type: 1
+    successModifier: 0.24
+    suspicionModifier: 0.10
+    unlockLevel: 5
+    techniqueName: Hook
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L5_H_OUTRAGE
+    displayText: This is honestly shocking — can’t believe it’s not on the front page.
+    type: 1
+    successModifier: 0.18
+    suspicionModifier: 0.12
+    unlockLevel: 5
+    techniqueName: Hook
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L5_H_LEAK
+    displayText: "Leaked details are circulating — this explains everything."
+    type: 1
+    successModifier: 0.20
+    suspicionModifier: 0.14
+    unlockLevel: 5
+    techniqueName: Hook
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L5_P_BEFOREDELETE
+    displayText: Watch/read now before it gets removed.
+    type: 2
+    successModifier: 0.16
+    suspicionModifier: 0.20
+    unlockLevel: 5
+    techniqueName: Pressure
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L5_P_SHAREFAST
+    displayText: "Save this and share fast before it disappears."
+    type: 2
+    successModifier: 0.14
+    suspicionModifier: 0.22
+    unlockLevel: 5
+    techniqueName: Pressure
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L5_AU_SOURCE
+    displayText: Source says it’s “confirmed” by insiders.
+    type: 3
+    successModifier: 0.12
+    suspicionModifier: 0.18
+    unlockLevel: 5
+    techniqueName: Authority
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L5_AU_REPORTER
+    displayText: "Independent reporter update (developing story)."
+    type: 3
+    successModifier: 0.10
+    suspicionModifier: 0.16
+    unlockLevel: 5
+    techniqueName: Authority
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L5_SP_VIEWCOUNT
+    displayText: Already at 200k views — people are spreading it fast.
+    type: 4
+    successModifier: 0.16
+    suspicionModifier: 0.12
+    unlockLevel: 5
+    techniqueName: SocialProof
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L5_SP_COMMENTSWILD
+    displayText: Comments are going wild on this.
+    type: 4
+    successModifier: 0.12
+    suspicionModifier: 0.10
+    unlockLevel: 5
+    techniqueName: SocialProof
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L5_SP_EVERYWHERE
+    displayText: Everyone’s reposting this — I’ve seen it nonstop today.
+    type: 4
+    successModifier: 0.10
+    suspicionModifier: 0.12
+    unlockLevel: 5
+    techniqueName: SocialProof
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L5_CTA_READ
+    displayText: "Read the full story here:"
+    type: 5
+    successModifier: 0.14
+    suspicionModifier: 0.08
+    unlockLevel: 5
+    techniqueName: CallToAction
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L5_CTA_SHARE
+    displayText: Share so more people see it before it’s gone.
+    type: 5
+    successModifier: 0.10
+    suspicionModifier: 0.18
+    unlockLevel: 5
+    techniqueName: CallToAction
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L5_CTA_TAP
+    displayText: "Tap the link and tell me what you think:"
+    type: 5
+    successModifier: 0.12
+    suspicionModifier: 0.12
+    unlockLevel: 5
+    techniqueName: CallToAction
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L5_PAY_NEWSLOOK
+    displayText: daily-report-live[dot]site/story
+    type: 6
+    successModifier: 0.18
+    suspicionModifier: 0.22
+    unlockLevel: 5
+    techniqueName: PayloadLink
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L5_PAY_SHORT
+    displayText: short.link/breaking-story
+    type: 6
+    successModifier: 0.10
+    suspicionModifier: 0.25
+    unlockLevel: 5
+    techniqueName: PayloadLink
+    cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
+    icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - id: L5_PAY_LOOKALIKE
+    displayText: world-report-now[dot]com/read
+    type: 6
+    successModifier: 0.14
+    suspicionModifier: 0.26
+    unlockLevel: 5
+    techniqueName: PayloadLink
     cardColour: {r: 0.7735849, g: 0.28097185, b: 0.28097185, a: 0}
     icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
